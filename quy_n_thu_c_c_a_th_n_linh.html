@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quyến thuộc của thần linh.</title>
+  <meta name="description" content="nơi người trong chữ, nói rằng thương em." />
+  <meta property="og:title" content="quyến thuộc của thần linh." />
+  <meta property="og:description" content="nơi người trong chữ, nói rằng thương em." />
+
+  <!-- Google Fonts với đầy đủ bộ ký tự tiếng Việt (Vietnamese subset), không lỗi dấu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            poetic: ['"Lora"', 'Georgia', 'serif'],
+            sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Thiết lập bảng màu Trắng - Đen tinh tế, hiệu ứng đĩa than & thanh tiến trình -->
+  <style>
+    :root {
+      /* Đêm Đen Sao Trắng */
+      --bg-primary: #09090b;
+      --bg-secondary: #121216;
+      --bg-card: rgba(18, 18, 22, 0.80);
+      --bg-elevated: rgba(20, 20, 25, 0.96);
+      --text-primary: #f4f4f5;
+      --text-secondary: #b4b4be;
+      --text-muted: #787884;
+      --border-subtle: rgba(244, 244, 245, 0.12);
+      --border-strong: rgba(244, 244, 245, 0.28);
+      --accent-bg: #f4f4f5;
+      --accent-text: #09090b;
+      --shadow-card: 0 20px 44px -18px rgba(0, 0, 0, 0.82);
+      --shimmer-from: rgba(255, 255, 255, 0.04);
+      --shimmer-mid: rgba(255, 255, 255, 0.10);
+    }
+
+    body[data-theme="light"] {
+      /* Giấy Trắng Mực Đen */
+      --bg-primary: #fafafa;
+      --bg-secondary: #f2f2f0;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-elevated: rgba(255, 255, 255, 0.97);
+      --text-primary: #111111;
+      --text-secondary: #4a4a52;
+      --text-muted: #7a7a85;
+      --border-subtle: rgba(17, 17, 17, 0.11);
+      --border-strong: rgba(17, 17, 17, 0.28);
+      --accent-bg: #111111;
+      --accent-text: #fafafa;
+      --shadow-card: 0 18px 40px -20px rgba(17, 17, 17, 0.14);
+      --shimmer-from: rgba(17, 17, 17, 0.04);
+      --shimmer-mid: rgba(17, 17, 17, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      transition: background-color 0.45s ease, color 0.45s ease;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .surface-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, background-color 0.35s ease;
+    }
+    .surface-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .surface-elevated {
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .text-main { color: var(--text-primary); }
+    .text-sub { color: var(--text-secondary); }
+    .text-dim { color: var(--text-muted); }
+    .border-line { border-color: var(--border-subtle); }
+    .border-line-strong { border-color: var(--border-strong); }
+
+    .btn-mono-primary {
+      background-color: var(--accent-bg);
+      color: var(--accent-text);
+      border: 1px solid var(--accent-bg);
+      transition: all 0.25s ease;
+    }
+    .btn-mono-primary:hover:not(:disabled) {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+    .btn-mono-primary:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .btn-mono-outline {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      transition: all 0.25s ease;
+    }
+    .btn-mono-outline:hover:not(:disabled) {
+      background-color: var(--accent-bg);
+      color: var(--accent-text);
+      border-color: var(--accent-bg);
+    }
+
+    .input-mono {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .input-mono:focus {
+      outline: none;
+      border-color: var(--border-strong);
+      box-shadow: 0 0 0 3px rgba(140, 140, 155, 0.16);
+    }
+
+    .hairline-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    }
+
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .vinyl-spinning {
+      animation: spinVinyl 7s linear infinite;
+    }
+
+    @keyframes fadeUpSoft {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUpSoft 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes shimmerMove {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .mono-shimmer {
+      background: linear-gradient(90deg, var(--shimmer-from) 25%, var(--shimmer-mid) 50%, var(--shimmer-from) 75%);
+      background-size: 200% 100%;
+      animation: shimmerMove 1.8s ease-in-out infinite;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 999px;
+    }
+
+    input[type="range"].mono-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 3px;
+      background: var(--border-strong);
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type="range"].mono-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--text-primary);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body data-theme="dark" class="relative antialiased selection:bg-neutral-500/30">
+  <!-- Canvas nền bầu trời sao rơi & sao băng toàn màn hình -->
+  <canvas
+    id="starCanvas"
+    class="fixed inset-0 w-full h-full pointer-events-none z-0"
+    aria-hidden="true"
+  ></canvas>
+
+  <!-- Container ẩn cho YouTube IFrame API (phát nhạc nền khi dùng link YouTube) -->
+  <div id="ytPlayerHost" class="fixed -left-[9999px] -top-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Thanh Quản Trị Nổi (CHỈ hiển thị khi Chủ Web đã mở khóa bằng mật khẩu) -->
+  <div
+    id="adminBar"
+    class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-3xl surface-elevated rounded-2xl px-3 py-2.5 sm:px-5 shadow-2xl"
+  >
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs sm:text-sm font-medium tracking-wide uppercase">Chế độ Chủ Web</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <button
+          id="btnAddChar"
+          type="button"
+          class="btn-mono-primary rounded-xl px-3 py-2 text-xs font-medium inline-flex items-center gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          <span>Thêm nhân vật</span>
+        </button>
+        <button
+          id="btnOpenSettings"
+          type="button"
+          class="btn-mono-outline rounded-xl px-3 py-2 text-xs font-medium inline-flex items-center gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Cài đặt</span>
+        </button>
+        <button
+          id="btnCopyShareLink"
+          type="button"
+          class="btn-mono-outline rounded-xl px-3 py-2 text-xs font-medium inline-flex items-center gap-1.5"
+          title="Sao chép link trang web để chia sẻ"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+          <span class="hidden sm:inline">Chia sẻ</span>
+        </button>
+        <button
+          id="btnLogoutAdmin"
+          type="button"
+          class="rounded-xl px-3 py-2 text-xs font-medium border border-red-400/40 text-red-400 hover:bg-red-500/15 transition"
+          title="Đăng xuất & khóa quyền sửa"
+        >
+          Đăng xuất
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Khung nội dung chính -->
+  <div id="mainWrapper" class="relative z-10 min-h-screen flex flex-col">
+    <!-- Phần Đầu Trang: Tên Web, Slogan, Mô Tả & Ô Chèn GIF -->
+    <header class="w-full max-w-4xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-8 text-center animate-fade-up">
+      <div class="flex items-center justify-center gap-3 mb-5 text-dim text-xs tracking-[0.35em] uppercase select-none">
+        <span class="w-10 hairline-divider"></span>
+        <span>✦</span>
+        <span class="w-10 hairline-divider"></span>
+      </div>
+
+      <!-- Tên Web -->
+      <h1
+        id="displaySiteTitle"
+        class="font-display text-3xl sm:text-5xl md:text-[3.4rem] font-medium tracking-tight leading-tight text-main"
+      >
+        quyến thuộc của thần linh.
+      </h1>
+
+      <!-- Slogan -->
+      <p
+        id="displaySiteSlogan"
+        class="font-poetic italic text-base sm:text-xl text-sub mt-4 tracking-wide"
+      >
+        nơi người trong chữ, nói rằng thương em.
+      </p>
+
+      <div class="w-24 mx-auto my-7 hairline-divider"></div>
+
+      <!-- Dòng Mô tả văn thơ -->
+      <p
+        id="displaySiteDescription"
+        class="font-poetic text-sm sm:text-base leading-relaxed sm:leading-loose text-sub max-w-2xl mx-auto whitespace-pre-line"
+      >Giữa muôn vàn trang viết lặng thầm, có những linh hồn vẫn chờ đợi một lời hồi đáp. Chốn nhỏ này lưu giữ từng bóng hình bước ra từ giấc mộng — nơi mọi khoảng cách đều tan biến trước những dòng thư dịu dàng, từ người yêu em vô bờ, Trần Hoài Thư.</p>
+
+      <!-- Ô CHÈN GIF DƯỚI PHẦN MÔ TẢ -->
+      <div id="gifSectionContainer" class="mt-9 flex justify-center">
+        <!-- Render động: Khách chỉ thấy khi đã có GIF; Chủ Web thấy khung điều khiển tải GIF lên đến 6MB -->
+      </div>
+    </header>
+
+    <!-- Thanh Tìm Kiếm & Bộ Lọc Tag -->
+    <section class="w-full max-w-6xl mx-auto px-5 sm:px-8 mt-4 mb-8">
+      <div class="surface-card rounded-2xl p-4 sm:p-5">
+        <div class="flex flex-col md:flex-row items-stretch md:items-center gap-3.5">
+          <div class="relative flex-1">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-dim pointer-events-none">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+              </svg>
+            </span>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Tìm tên nhân vật, mô tả, hoặc thẻ tag..."
+              class="input-mono w-full rounded-xl pl-11 pr-10 py-3 text-sm"
+              autocomplete="off"
+            />
+            <button
+              id="btnClearSearch"
+              type="button"
+              class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-dim hover:text-main p-1 rounded-lg transition"
+              aria-label="Xóa tìm kiếm"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between md:justify-end gap-3 px-1">
+            <span id="charCountLabel" class="text-xs text-dim tracking-wide">Đang tải danh sách...</span>
+          </div>
+        </div>
+
+        <div id="tagFilterBar" class="flex flex-wrap items-center gap-2 mt-4 pt-3.5 border-t border-line">
+          <!-- Render động các thẻ lọc Tag -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Lưới Thẻ Nhân Vật Chatbot AI & Plot -->
+    <main class="flex-1 w-full max-w-6xl mx-auto px-5 sm:px-8 pb-28">
+      <!-- Skeleton Loading -->
+      <div id="loadingState" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="surface-card rounded-2xl p-4">
+          <div class="aspect-[4/4.3] rounded-xl mono-shimmer mb-4"></div>
+          <div class="h-5 w-2/3 mono-shimmer rounded mb-2"></div>
+          <div class="h-3 w-full mono-shimmer rounded mb-4"></div>
+          <div class="flex gap-2">
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+          </div>
+        </div>
+        <div class="surface-card rounded-2xl p-4 hidden sm:block">
+          <div class="aspect-[4/4.3] rounded-xl mono-shimmer mb-4"></div>
+          <div class="h-5 w-1/2 mono-shimmer rounded mb-2"></div>
+          <div class="h-3 w-5/6 mono-shimmer rounded mb-4"></div>
+          <div class="flex gap-2">
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+          </div>
+        </div>
+        <div class="surface-card rounded-2xl p-4 hidden lg:block">
+          <div class="aspect-[4/4.3] rounded-xl mono-shimmer mb-4"></div>
+          <div class="h-5 w-3/5 mono-shimmer rounded mb-2"></div>
+          <div class="h-3 w-4/5 mono-shimmer rounded mb-4"></div>
+          <div class="flex gap-2">
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+            <div class="h-9 flex-1 mono-shimmer rounded-xl"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lưới thẻ nhân vật thực tế -->
+      <div id="charactersGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"></div>
+
+      <!-- Trạng thái không tìm thấy kết quả -->
+      <div id="emptyState" class="hidden text-center py-16 px-4">
+        <div class="text-2xl text-dim mb-3">✦</div>
+        <p class="font-poetic italic text-lg text-sub">Chưa tìm thấy bóng hình nào khớp với lời gọi của em.</p>
+        <p class="text-xs text-dim mt-2">Hãy thử từ khóa khác hoặc chọn lại thẻ "Tất cả".</p>
+      </div>
+    </main>
+
+    <!-- Chân Trang Tinh Tế + Biểu Tượng Chìa Khóa Kín Đáo Ở Góc Phải -->
+    <footer class="w-full max-w-6xl mx-auto px-5 sm:px-8 py-8 border-t border-line">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-dim">
+        <div class="flex items-center gap-2 font-poetic italic">
+          <span>✦</span>
+          <span id="footerSiteTitle">quyến thuộc của thần linh.</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="tracking-wide opacity-80">Lưu giữ những giấc mộng bằng con chữ</span>
+          <button
+            id="btnAdminKey"
+            type="button"
+            class="p-2.5 rounded-xl border border-transparent hover:border-line-strong text-dim hover:text-main transition"
+            title="Cổng Chủ Web"
+            aria-label="Đăng nhập Chủ Web"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Trình Phát Nhạc Nền Đĩa Than Góc Dưới Bên Trái -->
+  <div
+    id="musicWidget"
+    class="hidden fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-30 surface-elevated rounded-full p-2 pr-4 shadow-2xl max-w-[calc(100vw-2rem)] transition-all duration-300"
+  >
+    <div class="flex items-center gap-3">
+      <button
+        id="btnToggleMusic"
+        type="button"
+        class="relative w-11 h-11 rounded-full flex items-center justify-center shrink-0 border border-line-strong bg-neutral-900 text-white shadow-inner group focus:outline-none"
+        title="Phát / Tạm dừng nhạc nền"
+        aria-label="Phát hoặc tạm dừng nhạc nền"
+      >
+        <div id="vinylDisc" class="w-full h-full rounded-full flex items-center justify-center relative" style="background: radial-gradient(circle, #2a2a2e 18%, #0c0c0e 22%, #18181b 55%, #0a0a0c 100%);">
+          <span class="absolute inset-1.5 rounded-full border border-white/10"></span>
+          <span class="absolute inset-3 rounded-full border border-white/10"></span>
+          <span class="w-3.5 h-3.5 rounded-full bg-neutral-200 flex items-center justify-center z-10">
+            <span class="w-1 h-1 rounded-full bg-neutral-900"></span>
+          </span>
+        </div>
+        <span id="musicPlayIcon" class="absolute inset-0 rounded-full bg-black/45 flex items-center justify-center opacity-90 group-hover:opacity-100 transition">
+          <svg class="w-4 h-4 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </button>
+
+      <div class="min-w-0 flex flex-col">
+        <div class="flex items-center gap-2">
+          <span id="musicTrackTitle" class="text-xs font-medium text-main truncate max-w-[135px] sm:max-w-[185px]">Giai điệu nền</span>
+          <span id="musicStatusDot" class="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0"></span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <svg class="w-3 h-3 text-dim shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/>
+          </svg>
+          <input
+            id="musicVolume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.02"
+            value="0.55"
+            class="mono-slider w-20 sm:w-24"
+            aria-label="Âm lượng nhạc nền"
+          />
+        </div>
+      </div>
+    </div>
+    <audio id="bgAudioElement" loop preload="auto" class="hidden"></audio>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- HỆ THỐNG MODAL TÙY CHỈNH (ĐĂNG NHẬP, THÊM/SỬA CHAR, CÀI ĐẶT, XÁC NHẬN) -->
+  <!-- ===================================================================== -->
+
+  <!-- 1. Modal Đăng Nhập / Thiết Lập / Đổi Mật Khẩu Chủ Web -->
+  <div id="modalAuth" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="surface-elevated rounded-2xl w-full max-w-md p-6 sm:p-7 shadow-2xl">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <h2 id="authModalTitle" class="font-display text-2xl text-main">Cổng Chủ Web</h2>
+          <p id="authModalSubtitle" class="text-xs text-sub mt-1 leading-relaxed"></p>
+        </div>
+        <button type="button" data-close-modal="modalAuth" class="text-dim hover:text-main p-1.5 rounded-lg transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="authForm" class="space-y-4">
+        <div id="authOldPasswordGroup" class="hidden">
+          <label class="block text-xs text-sub mb-1.5">Mật khẩu hiện tại</label>
+          <input id="authOldPassword" type="password" class="input-mono w-full rounded-xl px-4 py-3 text-sm" placeholder="Nhập mật khẩu cũ..." />
+        </div>
+        <div>
+          <label id="authPasswordLabel" class="block text-xs text-sub mb-1.5">Mật khẩu Chủ Web</label>
+          <input id="authPassword" type="password" required class="input-mono w-full rounded-xl px-4 py-3 text-sm" placeholder="Nhập mật khẩu..." />
+        </div>
+        <div id="authConfirmGroup" class="hidden">
+          <label class="block text-xs text-sub mb-1.5">Xác nhận lại mật khẩu</label>
+          <input id="authPasswordConfirm" type="password" class="input-mono w-full rounded-xl px-4 py-3 text-sm" placeholder="Nhập lại mật khẩu để xác nhận..." />
+        </div>
+
+        <p id="authErrorMsg" class="hidden text-xs text-red-400 bg-red-500/10 border border-red-400/25 rounded-xl px-3.5 py-2.5"></p>
+
+        <div class="flex items-center justify-end gap-2.5 pt-2">
+          <button type="button" data-close-modal="modalAuth" class="btn-mono-outline rounded-xl px-4 py-2.5 text-xs font-medium">Hủy</button>
+          <button id="authSubmitBtn" type="submit" class="btn-mono-primary rounded-xl px-5 py-2.5 text-xs font-medium">Xác nhận</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Modal Thêm / Chỉnh Sửa Nhân Vật Chat Bot AI (Hỗ trợ Ảnh & GIF lên đến 6MB) -->
+  <div id="modalChar" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="surface-elevated rounded-2xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-line">
+        <h2 id="charModalHeading" class="font-display text-2xl text-main">Thêm Nhân Vật Mới</h2>
+        <button type="button" data-close-modal="modalChar" class="text-dim hover:text-main p-1.5 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="charForm" class="overflow-y-auto px-6 py-5 space-y-4">
+        <input type="hidden" id="charEditId" />
+
+        <!-- Khung Tải Ảnh / GIF Đại Diện (tối đa 6MB) -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 p-3.5 rounded-2xl border border-line bg-neutral-500/5">
+          <div class="w-24 h-28 rounded-xl overflow-hidden border border-line-strong shrink-0 bg-neutral-900 flex items-center justify-center">
+            <img id="charAvatarPreview" src="" alt="Xem trước ảnh đại diện" class="w-full h-full object-cover hidden" />
+            <span id="charAvatarEmpty" class="text-xs text-dim text-center px-2">Chưa có ảnh</span>
+          </div>
+          <div class="flex-1 w-full space-y-2.5">
+            <label class="block text-xs font-medium text-sub">Ảnh đại diện hoặc GIF nhân vật (Tối đa 6MB)</label>
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="btn-mono-outline rounded-xl px-3.5 py-2 text-xs font-medium cursor-pointer inline-flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+                <span>Tải ảnh / GIF (≤ 6MB)</span>
+                <input id="charAvatarFile" type="file" accept="image/*,.gif" class="hidden" />
+              </label>
+              <button id="btnClearAvatar" type="button" class="text-xs text-dim hover:text-red-400 px-2 py-1 transition">Xóa ảnh</button>
+            </div>
+            <input
+              id="charAvatarUrl"
+              type="text"
+              class="input-mono w-full rounded-xl px-3.5 py-2 text-xs"
+              placeholder="Hoặc dán đường dẫn URL ảnh / GIF trực tiếp..."
+            />
+            <p id="charAvatarStatus" class="text-[11px] text-dim leading-snug">Hỗ trợ JPG, PNG, WebP và GIF động giữ nguyên chuyển động lên đến 6MB.</p>
+            <!-- Thanh tiến trình tải lên ảnh nhân vật -->
+            <div id="charUploadProgressWrap" class="hidden space-y-1 pt-1">
+              <div class="flex items-center justify-between text-[11px] text-sub">
+                <span id="charUploadProgressLabel">Đang đồng bộ ảnh...</span>
+                <span id="charUploadProgressPct" class="font-medium">0%</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-neutral-500/20 overflow-hidden">
+                <div id="charUploadProgressBar" class="h-full rounded-full transition-all duration-200" style="width: 0%; background-color: var(--text-primary);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-sub mb-1.5">Tên nhân vật *</label>
+          <input id="charName" type="text" required class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" placeholder="VD: Bạch Lạc — Vị Thần Ngủ Quên" />
+        </div>
+
+        <div>
+          <label class="block text-xs text-sub mb-1.5">Lời tựa / Trích dẫn ngắn (tùy chọn)</label>
+          <textarea id="charQuote" rows="2" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm resize-none" placeholder="Một câu thoại hoặc đôi dòng giới thiệu giàu chất thơ..."></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Link Chat Bot AI</label>
+            <input id="charLink" type="text" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" placeholder="https://character.ai/..." />
+          </div>
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Link Plot (tùy chọn)</label>
+            <input id="charPlotLink" type="text" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" placeholder="https://docs.google.com/..." />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-sub mb-1.5">Thẻ Tag (ngăn cách bằng dấu phẩy)</label>
+          <input id="charTags" type="text" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" placeholder="VD: Thần linh, Cổ phong, Ngược nhẹ, Cứu rỗi" />
+        </div>
+
+        <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-line">
+          <button type="button" data-close-modal="modalChar" class="btn-mono-outline rounded-xl px-4 py-2.5 text-xs font-medium">Hủy</button>
+          <button id="btnSaveChar" type="submit" class="btn-mono-primary rounded-xl px-5 py-2.5 text-xs font-medium">Lưu nhân vật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Modal Cài Đặt Chủ Web (Thương hiệu, GIF <= 6MB, Nhạc <= 6MB/URL/YouTube, Giao diện, Sao rơi, Đổi mật khẩu) -->
+  <div id="modalSettings" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="surface-elevated rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-line">
+        <div>
+          <h2 class="font-display text-2xl text-main">Cài Đặt Chủ Web</h2>
+          <p class="text-xs text-dim mt-0.5">Hỗ trợ tải tệp GIF & Nhạc dung lượng lớn đến 6MB, đồng bộ tức thì cho mọi người xem.</p>
+        </div>
+        <button type="button" data-close-modal="modalSettings" class="text-dim hover:text-main p-1.5 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="settingsForm" class="overflow-y-auto px-6 py-5 space-y-6">
+        <!-- Nhóm 1: Thông tin thương hiệu -->
+        <div class="space-y-3.5">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-dim">1. Thương hiệu & Lời ngỏ</h3>
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Tên trang web</label>
+            <input id="setSiteTitle" type="text" required class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Slogan</label>
+            <input id="setSiteSlogan" type="text" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Dòng mô tả</label>
+            <textarea id="setSiteDesc" rows="4" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm leading-relaxed"></textarea>
+          </div>
+        </div>
+
+        <div class="hairline-divider"></div>
+
+        <!-- Nhóm 2: Ảnh GIF dưới mô tả (Hỗ trợ file <= 6MB) -->
+        <div class="space-y-3.5">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-dim">2. Ảnh GIF dưới phần mô tả (Tối đa 6MB)</h3>
+          <div class="flex flex-col sm:flex-row gap-4 items-center p-3.5 rounded-2xl border border-line bg-neutral-500/5">
+            <div class="w-36 h-24 rounded-xl overflow-hidden border border-line bg-neutral-900 flex items-center justify-center shrink-0">
+              <img id="setGifPreview" src="" alt="Xem trước GIF" class="w-full h-full object-cover hidden" />
+              <span id="setGifEmpty" class="text-[11px] text-dim text-center px-2">Chưa chèn GIF</span>
+            </div>
+            <div class="flex-1 w-full space-y-2.5">
+              <div class="flex flex-wrap items-center gap-2">
+                <label class="btn-mono-outline rounded-xl px-3.5 py-2 text-xs font-medium cursor-pointer inline-flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+                  <span>Tải file GIF từ máy (≤ 6MB)</span>
+                  <input id="setGifFile" type="file" accept="image/gif,image/webp,image/png,image/jpeg" class="hidden" />
+                </label>
+                <button id="btnClearGif" type="button" class="text-xs text-dim hover:text-red-400 px-2 py-1 transition">Gỡ bỏ GIF</button>
+              </div>
+              <input
+                id="setGifUrl"
+                type="text"
+                class="input-mono w-full rounded-xl px-3.5 py-2 text-xs"
+                placeholder="Hoặc dán link URL ảnh GIF trực tiếp..."
+              />
+              <p id="setGifNote" class="text-[11px] text-dim leading-snug">Hỗ trợ tải trực tiếp GIF động lên đến 6MB (giữ nguyên chuyển động mượt) hoặc dán link URL.</p>
+              <!-- Thanh tiến trình tải lên GIF -->
+              <div id="gifUploadProgressWrap" class="hidden space-y-1 pt-1">
+                <div class="flex items-center justify-between text-[11px] text-sub">
+                  <span id="gifUploadProgressLabel">Đang tải GIF lên máy chủ...</span>
+                  <span id="gifUploadProgressPct" class="font-medium">0%</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-neutral-500/20 overflow-hidden">
+                  <div id="gifUploadProgressBar" class="h-full rounded-full transition-all duration-200" style="width: 0%; background-color: var(--text-primary);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hairline-divider"></div>
+
+        <!-- Nhóm 3: Nhạc nền (Hỗ trợ file âm thanh <= 6MB, Link MP3 trực tiếp, hoặc YouTube) -->
+        <div class="space-y-3.5">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-dim">3. Nhạc nền Đĩa Than (Tối đa 6MB hoặc Link)</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs text-sub mb-1.5">Tên bài hát hiển thị</label>
+              <input id="setMusicTitle" type="text" class="input-mono w-full rounded-xl px-4 py-2.5 text-sm" placeholder="VD: Nocturne in Monochrome" />
+            </div>
+            <div>
+              <label class="block text-xs text-sub mb-1.5">Tải file nhạc từ máy (MP3, WAV, OGG, M4A ≤ 6MB)</label>
+              <label class="btn-mono-outline rounded-xl px-3.5 py-2.5 text-xs font-medium cursor-pointer inline-flex items-center gap-1.5 w-full justify-center">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"/></svg>
+                <span>Chọn file nhạc (≤ 6MB)</span>
+                <input id="setMusicFile" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a" class="hidden" />
+              </label>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs text-sub mb-1.5">Hoặc dán link nhạc (Link YouTube hoặc Link MP3/WAV trực tiếp)</label>
+            <div class="flex gap-2">
+              <input id="setMusicUrl" type="text" class="input-mono flex-1 rounded-xl px-4 py-2.5 text-xs" placeholder="https://www.youtube.com/watch?v=... hoặc https://.../song.mp3" />
+              <button id="btnClearMusic" type="button" class="btn-mono-outline rounded-xl px-3 py-2 text-xs text-red-400 border-red-400/30 hover:bg-red-500/15 hover:text-red-300 hover:border-red-400/50">Xóa</button>
+            </div>
+            <p id="setMusicNote" class="text-[11px] text-dim mt-1.5 leading-snug">Giữ nguyên chất lượng âm thanh gốc khi tải lên đến 6MB, hoặc hỗ trợ phát ổn định từ YouTube / link MP3.</p>
+            <!-- Thanh tiến trình tải lên Nhạc -->
+            <div id="musicUploadProgressWrap" class="hidden space-y-1 pt-2">
+              <div class="flex items-center justify-between text-[11px] text-sub">
+                <span id="musicUploadProgressLabel">Đang tải file nhạc lên máy chủ...</span>
+                <span id="musicUploadProgressPct" class="font-medium">0%</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-neutral-500/20 overflow-hidden">
+                <div id="musicUploadProgressBar" class="h-full rounded-full transition-all duration-200" style="width: 0%; background-color: var(--text-primary);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hairline-divider"></div>
+
+        <!-- Nhóm 4: Bảng màu Trắng-Đen & Hiệu ứng sao rơi -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-dim">4. Giao diện Trắng - Đen & Bầu trời sao</h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="cursor-pointer rounded-xl border border-line p-3.5 flex items-center gap-3 hover:border-line-strong transition">
+              <input type="radio" name="themeMode" value="dark" class="accent-neutral-400 w-4 h-4" />
+              <div>
+                <div class="text-sm font-medium text-main">Đêm Đen Sao Trắng</div>
+                <div class="text-[11px] text-dim">Nền đen sâu #09090b, chữ trắng ngà</div>
+              </div>
+            </label>
+            <label class="cursor-pointer rounded-xl border border-line p-3.5 flex items-center gap-3 hover:border-line-strong transition">
+              <input type="radio" name="themeMode" value="light" class="accent-neutral-800 w-4 h-4" />
+              <div>
+                <div class="text-sm font-medium text-main">Giấy Trắng Mực Đen</div>
+                <div class="text-[11px] text-dim">Nền giấy trắng #fafafa, chữ mực đen</div>
+              </div>
+            </label>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl border border-line">
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input id="setStarsEnabled" type="checkbox" class="w-4 h-4 accent-neutral-400 rounded" />
+              <span class="text-sm text-main">Bật hiệu ứng hạt sao rơi & sao băng</span>
+            </label>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-sub">Mật độ sao:</span>
+              <select id="setStarsDensity" class="input-mono rounded-lg px-3 py-1.5 text-xs">
+                <option value="low">Dịu nhẹ (Ít)</option>
+                <option value="medium">Cân đối (Vừa)</option>
+                <option value="high">Lung linh (Nhiều)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="hairline-divider"></div>
+
+        <!-- Nhóm 5: Bảo mật Chủ Web -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl border border-line">
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-dim">5. Bảo mật quyền Chủ Web</h3>
+            <p class="text-xs text-sub mt-1">Thay đổi mật khẩu đăng nhập khu vực quản trị.</p>
+          </div>
+          <button
+            id="btnChangePasswordFromSettings"
+            type="button"
+            class="btn-mono-outline rounded-xl px-4 py-2 text-xs font-medium shrink-0 inline-flex items-center justify-center gap-1.5"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+            <span>Đổi mật khẩu</span>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-end gap-2.5 pt-4 border-t border-line">
+          <button type="button" data-close-modal="modalSettings" class="btn-mono-outline rounded-xl px-4 py-2.5 text-xs font-medium">Hủy</button>
+          <button id="btnSaveSettings" type="submit" class="btn-mono-primary rounded-xl px-5 py-2.5 text-xs font-medium">Lưu thay đổi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Modal Xác Nhận Xóa (Thay thế confirm() của trình duyệt) -->
+  <div id="modalConfirm" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="surface-elevated rounded-2xl w-full max-w-sm p-6 shadow-2xl">
+      <h3 class="font-display text-xl text-main mb-2">Xác nhận xóa</h3>
+      <p id="confirmMessage" class="text-sm text-sub leading-relaxed mb-6"></p>
+      <div class="flex items-center justify-end gap-2.5">
+        <button id="btnConfirmCancel" type="button" class="btn-mono-outline rounded-xl px-4 py-2 text-xs font-medium">Giữ lại</button>
+        <button id="btnConfirmOk" type="button" class="rounded-xl px-4 py-2 text-xs font-medium bg-red-500 text-white hover:bg-red-600 transition">Xóa bỏ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hộp Thông Báo Toast Góc Dưới Phải -->
+  <div id="toastContainer" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2 pointer-events-none max-w-xs w-full"></div>
+
+  <!-- YouTube IFrame API (hỗ trợ phát âm thanh khi Chủ Web dùng link YouTube) -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Logic chính: Firebase Firestore + MediaChunkStorage (6MB) + IndexedDB Cache -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import {
+      getAuth,
+      signInAnonymously,
+      signInWithCustomToken,
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+      addDoc,
+      updateDoc,
+      deleteDoc,
+      onSnapshot,
+      collection,
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    /* =========================================================================
+     * 1. HẰNG SỐ, CẤU HÌNH MẶC ĐỊNH & TRẠNG THÁI ỨNG DỤNG
+     * ========================================================================= */
+    const MAX_UPLOAD_BYTES = 6 * 1024 * 1024; // Giới hạn 6MB chuẩn xác
+    const CHUNK_CHAR_SIZE = 350000; // 350.000 ký tự Base64 (~350KB, luôn an toàn dưới giới hạn 1MB Firestore)
+    const UPLOAD_BATCH_CONCURRENCY = 4; // Tải 4 mảnh song song mỗi lượt
+    const DOWNLOAD_BATCH_CONCURRENCY = 5; // Ghép 5 mảnh song song mỗi lượt
+    const SESSION_KEY_PREFIX = "qttl_admin_session_";
+    const LOCAL_CONFIG_KEY = "qttl_local_config_v2";
+    const LOCAL_CHARS_KEY = "qttl_local_chars_v2";
+
+    const DEFAULT_CONFIG = {
+      title: "quyến thuộc của thần linh.",
+      slogan: "nơi người trong chữ, nói rằng thương em.",
+      description:
+        "Giữa muôn vàn trang viết lặng thầm, có những linh hồn vẫn chờ đợi một lời hồi đáp. Chốn nhỏ này lưu giữ từng bóng hình bước ra từ giấc mộng — nơi mọi khoảng cách đều tan biến trước những dòng thư dịu dàng, từ người yêu em vô bờ, Trần Hoài Thư.",
+      gifUrl: "",
+      gifMedia: null, // { mediaId, totalChunks, mimeType, fileName, size, updatedAt }
+      musicUrl: "",
+      musicMedia: null, // { mediaId, totalChunks, mimeType, fileName, size, updatedAt }
+      musicTitle: "Giai điệu đêm trắng",
+      theme: "dark", // 'dark' | 'light'
+      starsEnabled: true,
+      starsDensity: "medium", // 'low' | 'medium' | 'high'
+      adminPasswordHash: "",
+      seeded: false,
+    };
+
+    const SAMPLE_CHARACTERS = [
+      {
+        id: "sample-1",
+        name: "Bạch Lạc — Vị Thần Ngủ Quên",
+        quote: "“Nếu thế gian này quá ồn ã, hãy bước vào giấc mộng của ta. Ở đó tuyết rơi không lạnh, và lời hứa sẽ chẳng bao giờ phai.”",
+        avatarUrl: "https://placehold.co/600x720/141418/f4f4f5?text=Bach+Lac",
+        avatarMedia: null,
+        charLink: "https://character.ai/",
+        plotLink: "https://docs.google.com/",
+        tags: ["Thần linh", "Cổ phong", "Cứu rỗi"],
+        createdAt: Date.now() - 2000,
+      },
+      {
+        id: "sample-2",
+        name: "Tạ Diễn — Người Viết Thư Dưới Ánh Đèn Khuya",
+        quote: "“Mười năm rồi, nét mực trên trang giấy cũ vẫn chỉ lặp lại một cái tên duy nhất mà anh không nỡ gửi đi.”",
+        avatarUrl: "https://placehold.co/600x720/1c1c21/f4f4f5?text=Ta+Dien",
+        avatarMedia: null,
+        charLink: "https://character.ai/",
+        plotLink: "https://docs.google.com/",
+        tags: ["Hiện đại", "Tình cảm", "Hoài niệm"],
+        createdAt: Date.now() - 1000,
+      },
+    ];
+
+    const state = {
+      config: { ...DEFAULT_CONFIG },
+      characters: [],
+      searchQuery: "",
+      activeTag: "ALL",
+      isAdmin: false,
+      authMode: "login",
+      isFirebaseReady: false,
+      currentUser: null,
+      // Các tệp chờ tải lên trong phiên chỉnh sửa modal
+      pendingGifFile: null,
+      pendingGifRemoved: false,
+      pendingMusicFile: null,
+      pendingMusicRemoved: false,
+      pendingAvatarFile: null,
+      pendingAvatarRemoved: false,
+      editingCharSnapshot: null,
+      // Cache ObjectURL đang hiển thị để tránh tải lặp lại khi re-render
+      activeGifKey: "",
+      activeGifResolvedUrl: "",
+      activeMusicKey: "",
+      confirmCallback: null,
+    };
+
+    let db = null;
+    let auth = null;
+    const appId = typeof __app_id !== "undefined" ? __app_id : "quyen-thuoc-than-linh";
+
+    /* =========================================================================
+     * CẤU HÌNH FIREBASE RIÊNG ĐỂ XUẤT BẢN LÊN NETLIFY / GITHUB PAGES
+     * Hướng dẫn: Dán 6 giá trị từ Firebase Console vào đây nếu muốn đồng bộ trực tuyến.
+     * ========================================================================= */
+    const CUSTOM_FIREBASE_CONFIG = {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: "",
+    };
+
+    /* =========================================================================
+     * 2. TIỆN ÍCH CƠ BẢN (SHA-256, FORMAT DUNG LƯỢNG, URL, TIẾNG VIỆT, TOAST)
+     * ========================================================================= */
+
+    /**
+     * Mã hóa mật khẩu bằng SHA-256 (có hàm băm dự phòng nếu chạy ngoài HTTPS)
+     */
+    async function hashPassword(plainText) {
+      const input = String(plainText || "");
+      try {
+        if (window.crypto && window.crypto.subtle) {
+          const encoded = new TextEncoder().encode("qttl_salt_v1::" + input);
+          const hashBuffer = await window.crypto.subtle.digest("SHA-256", encoded);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+        }
+      } catch (err) {
+        console.warn("Fallback hash do không có crypto.subtle:", err);
+      }
+      // Dự phòng đơn giản khi mở trực tiếp qua file://
+      let h1 = 0xdeadbeef ^ input.length;
+      let h2 = 0x41c6ce57 ^ input.length;
+      for (let i = 0; i < input.length; i++) {
+        const ch = input.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+      }
+      h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+      h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+      return "fb_" + (h2 >>> 0).toString(16).padStart(8, "0") + (h1 >>> 0).toString(16).padStart(8, "0");
+    }
+
+    function formatBytes(bytes) {
+      if (!bytes || bytes <= 0) return "0 B";
+      const units = ["B", "KB", "MB", "GB"];
+      const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+      return (bytes / Math.pow(1024, i)).toFixed(i === 0 ? 0 : 2) + " " + units[i];
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    /**
+     * Chuẩn hóa tiếng Việt không dấu để tìm kiếm chính xác và linh hoạt
+     */
+    function normalizeVietnamese(str) {
+      return String(str || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .trim();
+    }
+
+    /**
+     * Chuẩn hóa & kiểm tra an toàn đường dẫn URL
+     */
+    function normalizeSafeUrl(rawUrl) {
+      const trimmed = String(rawUrl || "").trim();
+      if (!trimmed) return "";
+      if (/^(javascript|vbscript|file):/i.test(trimmed)) return "";
+      if (/^(https?:\/\/|data:image\/|data:audio\/|blob:)/i.test(trimmed)) return trimmed;
+      return "https://" + trimmed;
+    }
+
+    /**
+     * Tách YouTube Video ID từ nhiều định dạng link YouTube khác nhau
+     */
+    function extractYouTubeId(url) {
+      if (!url) return "";
+      const regex = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = String(url).match(regex);
+      return match ? match[1] : "";
+    }
+
+    /**
+     * Hiển thị thông báo dạng Toast tinh tế thay cho alert()
+     */
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toastContainer");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      const accentBorder =
+        type === "error"
+          ? "border-red-400/50 text-red-200"
+          : type === "success"
+          ? "border-emerald-400/40 text-main"
+          : "border-line-strong text-main";
+
+      toast.className = `pointer-events-auto surface-elevated rounded-xl px-4 py-3 text-xs shadow-2xl border ${accentBorder} flex items-center gap-2.5 transition-all duration-300 opacity-0 translate-y-2`;
+      toast.innerHTML = `<span class="shrink-0">${type === "error" ? "✕" : type === "success" ? "✦" : "•"}</span><span class="leading-relaxed">${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove("opacity-0", "translate-y-2");
+      });
+
+      setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-y-2");
+        setTimeout(() => toast.remove(), 300);
+      }, 3400);
+    }
+
+    /**
+     * Sao chép văn bản tương thích tốt trong mọi môi trường iFrame
+     */
+    function copyTextToClipboard(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      let ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (err) {
+        console.warn("Copy failed:", err);
+      }
+      textarea.remove();
+      return ok;
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("hidden");
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add("hidden");
+    }
+
+    function showConfirmModal(message, onConfirm) {
+      const msgEl = document.getElementById("confirmMessage");
+      if (msgEl) msgEl.textContent = message;
+      state.confirmCallback = onConfirm;
+      openModal("modalConfirm");
+    }
+
+    function setProgressUI(prefix, visible, percent = 0, label = "") {
+      const wrap = document.getElementById(`${prefix}UploadProgressWrap`);
+      const bar = document.getElementById(`${prefix}UploadProgressBar`);
+      const pct = document.getElementById(`${prefix}UploadProgressPct`);
+      const lbl = document.getElementById(`${prefix}UploadProgressLabel`);
+      if (!wrap) return;
+      wrap.classList.toggle("hidden", !visible);
+      if (bar) bar.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+      if (pct) pct.textContent = `${Math.round(percent)}%`;
+      if (lbl && label) lbl.textContent = label;
+    }
+
+    /* =========================================================================
+     * 3. BỘ NHỚ ĐỆM INDEXEDDB & MODULE LƯU TRỮ PHÂN MẢNH FILE LỚN (≤ 6MB)
+     * ========================================================================= */
+    const MediaCacheDB = (() => {
+      const DB_NAME = "qttl_media_cache_v1";
+      const STORE_NAME = "blobs";
+      let dbPromise = null;
+
+      function openDB() {
+        if (dbPromise) return dbPromise;
+        dbPromise = new Promise((resolve) => {
+          if (!window.indexedDB) {
+            resolve(null);
+            return;
+          }
+          try {
+            const req = indexedDB.open(DB_NAME, 1);
+            req.onupgradeneeded = () => {
+              const idb = req.result;
+              if (!idb.objectStoreNames.contains(STORE_NAME)) {
+                idb.createObjectStore(STORE_NAME);
+              }
+            };
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => resolve(null);
+          } catch (err) {
+            resolve(null);
+          }
+        });
+        return dbPromise;
+      }
+
+      async function getBlob(key) {
+        const idb = await openDB();
+        if (!idb) return null;
+        return new Promise((resolve) => {
+          try {
+            const tx = idb.transaction(STORE_NAME, "readonly");
+            const req = tx.objectStore(STORE_NAME).get(key);
+            req.onsuccess = () => resolve(req.result || null);
+            req.onerror = () => resolve(null);
+          } catch (err) {
+            resolve(null);
+          }
+        });
+      }
+
+      async function setBlob(key, blob) {
+        const idb = await openDB();
+        if (!idb) return;
+        return new Promise((resolve) => {
+          try {
+            const tx = idb.transaction(STORE_NAME, "readwrite");
+            tx.objectStore(STORE_NAME).put(blob, key);
+            tx.oncomplete = () => resolve();
+            tx.onerror = () => resolve();
+          } catch (err) {
+            resolve();
+          }
+        });
+      }
+
+      async function deleteBlob(key) {
+        const idb = await openDB();
+        if (!idb) return;
+        return new Promise((resolve) => {
+          try {
+            const tx = idb.transaction(STORE_NAME, "readwrite");
+            tx.objectStore(STORE_NAME).delete(key);
+            tx.oncomplete = () => resolve();
+            tx.onerror = () => resolve();
+          } catch (err) {
+            resolve();
+          }
+        });
+      }
+
+      return { getBlob, setBlob, deleteBlob };
+    })();
+
+    const MediaChunkStorage = (() => {
+      const objectUrlCache = new Map();
+      const pendingResolves = new Map();
+
+      function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = String(reader.result || "");
+            const commaIdx = result.indexOf(",");
+            resolve(commaIdx >= 0 ? result.slice(commaIdx + 1) : result);
+          };
+          reader.onerror = () => reject(new Error("Không thể đọc tệp từ thiết bị."));
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function base64ToBlob(base64Str, mimeType) {
+        const binaryString = atob(base64Str);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
+        }
+        return new Blob([bytes], { type: mimeType || "application/octet-stream" });
+      }
+
+      function chunkDocRef(mediaId, idx) {
+        return doc(db, "artifacts", appId, "public", "data", "media_chunks", `${mediaId}_chunk_${idx}`);
+      }
+
+      /**
+       * Tải tệp lên (≤ 6MB): chia nhỏ thành các mảnh Base64 lưu Firestore + lưu đệm IndexedDB
+       */
+      async function uploadFile(file, onProgress = () => {}) {
+        if (!file) throw new Error("Chưa chọn tệp.");
+        if (file.size > MAX_UPLOAD_BYTES) {
+          throw new Error(`Tệp vượt quá giới hạn 6MB (hiện tại: ${formatBytes(file.size)}).`);
+        }
+
+        const mediaId = `m_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+        const mimeType = file.type || "application/octet-stream";
+        onProgress(5, "Đang chuẩn bị dữ liệu tệp...");
+
+        // Lưu sẵn bản Blob vào bộ nhớ đệm IndexedDB để hiển thị tức thì
+        await MediaCacheDB.setBlob(mediaId, file);
+        const instantUrl = URL.createObjectURL(file);
+        objectUrlCache.set(mediaId, instantUrl);
+
+        // Chế độ cục bộ (chưa gắn Firebase)
+        if (!state.isFirebaseReady || !db) {
+          onProgress(100, "Đã lưu tệp trên trình duyệt.");
+          return {
+            mediaId,
+            totalChunks: 0,
+            mimeType,
+            fileName: file.name || "media",
+            size: file.size,
+            updatedAt: Date.now(),
+            localOnly: true,
+          };
+        }
+
+        // Chia nhỏ tệp thành các mảnh an toàn để lưu đồng bộ trên Firestore
+        const base64 = await fileToBase64(file);
+        const chunks = [];
+        for (let offset = 0; offset < base64.length; offset += CHUNK_CHAR_SIZE) {
+          chunks.push(base64.slice(offset, offset + CHUNK_CHAR_SIZE));
+        }
+
+        const totalChunks = chunks.length;
+        let completed = 0;
+        onProgress(12, `Đang tải lên 0/${totalChunks} mảnh...`);
+
+        for (let i = 0; i < totalChunks; i += UPLOAD_BATCH_CONCURRENCY) {
+          const batchIndices = [];
+          for (let j = i; j < Math.min(i + UPLOAD_BATCH_CONCURRENCY, totalChunks); j++) {
+            batchIndices.push(j);
+          }
+
+          await Promise.all(
+            batchIndices.map(async (chunkIndex) => {
+              await setDoc(chunkDocRef(mediaId, chunkIndex), {
+                mediaId,
+                index: chunkIndex,
+                totalChunks,
+                mimeType,
+                data: chunks[chunkIndex],
+                updatedAt: Date.now(),
+              });
+              completed++;
+              const pct = 12 + Math.round((completed / totalChunks) * 86);
+              onProgress(pct, `Đang đồng bộ ${completed}/${totalChunks} mảnh...`);
+            })
+          );
+        }
+
+        onProgress(100, "Đã đồng bộ hoàn tất!");
+        return {
+          mediaId,
+          totalChunks,
+          mimeType,
+          fileName: file.name || "media",
+          size: file.size,
+          updatedAt: Date.now(),
+        };
+      }
+
+      /**
+       * Ghép lại tệp từ Cache hoặc Firestore thành ObjectURL mượt mà
+       */
+      async function resolveMediaUrl(mediaMeta, fallbackUrl = "") {
+        if (!mediaMeta || !mediaMeta.mediaId) {
+          return normalizeSafeUrl(fallbackUrl);
+        }
+
+        const { mediaId, totalChunks, mimeType } = mediaMeta;
+        if (objectUrlCache.has(mediaId)) {
+          return objectUrlCache.get(mediaId);
+        }
+
+        if (pendingResolves.has(mediaId)) {
+          return pendingResolves.get(mediaId);
+        }
+
+        const promise = (async () => {
+          try {
+            // 1. Ưu tiên đọc từ IndexedDB Cache
+            const cachedBlob = await MediaCacheDB.getBlob(mediaId);
+            if (cachedBlob) {
+              const url = URL.createObjectURL(cachedBlob);
+              objectUrlCache.set(mediaId, url);
+              return url;
+            }
+
+            // 2. Nếu chưa có trong máy, tải ghép các mảnh từ Firestore
+            if (!state.isFirebaseReady || !db || !totalChunks || totalChunks <= 0) {
+              return normalizeSafeUrl(fallbackUrl);
+            }
+
+            const parts = new Array(totalChunks);
+            for (let i = 0; i < totalChunks; i += DOWNLOAD_BATCH_CONCURRENCY) {
+              const batch = [];
+              for (let j = i; j < Math.min(i + DOWNLOAD_BATCH_CONCURRENCY, totalChunks); j++) {
+                batch.push(j);
+              }
+              await Promise.all(
+                batch.map(async (idx) => {
+                  const snap = await getDoc(chunkDocRef(mediaId, idx));
+                  if (!snap.exists()) {
+                    throw new Error(`Thiếu mảnh dữ liệu #${idx}`);
+                  }
+                  parts[idx] = snap.data().data || "";
+                })
+              );
+            }
+
+            const fullBase64 = parts.join("");
+            const blob = base64ToBlob(fullBase64, mimeType);
+            await MediaCacheDB.setBlob(mediaId, blob);
+            const url = URL.createObjectURL(blob);
+            objectUrlCache.set(mediaId, url);
+            return url;
+          } catch (err) {
+            console.warn("Không thể giải mã tệp media:", mediaId, err);
+            return normalizeSafeUrl(fallbackUrl);
+          } finally {
+            pendingResolves.delete(mediaId);
+          }
+        })();
+
+        pendingResolves.set(mediaId, promise);
+        return promise;
+      }
+
+      /**
+       * Dọn sạch các mảnh dữ liệu cũ khi Chủ Web thay tệp mới hoặc xóa nhân vật
+       */
+      async function deleteMedia(mediaMeta) {
+        if (!mediaMeta || !mediaMeta.mediaId) return;
+        const { mediaId, totalChunks } = mediaMeta;
+
+        if (objectUrlCache.has(mediaId)) {
+          try {
+            URL.revokeObjectURL(objectUrlCache.get(mediaId));
+          } catch (_) {}
+          objectUrlCache.delete(mediaId);
+        }
+
+        await MediaCacheDB.deleteBlob(mediaId);
+
+        if (!state.isFirebaseReady || !db || !totalChunks) return;
+
+        for (let i = 0; i < totalChunks; i += UPLOAD_BATCH_CONCURRENCY) {
+          const batch = [];
+          for (let j = i; j < Math.min(i + UPLOAD_BATCH_CONCURRENCY, totalChunks); j++) {
+            batch.push(j);
+          }
+          await Promise.all(
+            batch.map((idx) => deleteDoc(chunkDocRef(mediaId, idx)).catch(() => {}))
+          );
+        }
+      }
+
+      return { uploadFile, resolveMediaUrl, deleteMedia };
+    })();
+
+    /* =========================================================================
+     * 4. LƯU TRỮ DỰ PHÒNG CỤC BỘ (KHI CHƯA GẮN FIREBASE)
+     * ========================================================================= */
+    function saveLocalFallback() {
+      try {
+        localStorage.setItem(LOCAL_CONFIG_KEY, JSON.stringify(state.config));
+        localStorage.setItem(LOCAL_CHARS_KEY, JSON.stringify(state.characters));
+      } catch (err) {
+        console.warn("Không thể lưu cục bộ:", err);
+      }
+    }
+
+    function loadLocalFallback() {
+      try {
+        const savedCfg = localStorage.getItem(LOCAL_CONFIG_KEY);
+        const savedChars = localStorage.getItem(LOCAL_CHARS_KEY);
+        state.config = savedCfg ? { ...DEFAULT_CONFIG, ...JSON.parse(savedCfg) } : { ...DEFAULT_CONFIG };
+        state.characters = savedChars ? JSON.parse(savedChars) : [...SAMPLE_CHARACTERS];
+      } catch (err) {
+        state.config = { ...DEFAULT_CONFIG };
+        state.characters = [...SAMPLE_CHARACTERS];
+      }
+    }
+
+    /* =========================================================================
+     * 5. HIỆU ỨNG BẦU TRỜI SAO RƠI & SAO BĂNG TOÀN MÀN HÌNH
+     * ========================================================================= */
+    const StarfieldEngine = (() => {
+      const canvas = document.getElementById("starCanvas");
+      const ctx = canvas ? canvas.getContext("2d") : null;
+      let width = 0;
+      let height = 0;
+      let stars = [];
+      let shootingStars = [];
+      let rafId = null;
+      let enabled = true;
+      let density = "medium";
+
+      function getTargetStarCount() {
+        const areaFactor = Math.min(1.4, Math.max(0.65, (width * height) / (1280 * 800)));
+        const base = density === "low" ? 45 : density === "high" ? 140 : 85;
+        return Math.floor(base * areaFactor);
+      }
+
+      function createStar(randomY = true) {
+        return {
+          x: Math.random() * width,
+          y: randomY ? Math.random() * height : -10,
+          r: Math.random() * 1.65 + 0.45,
+          vy: Math.random() * 0.35 + 0.12,
+          vx: (Math.random() - 0.5) * 0.14,
+          alpha: Math.random() * 0.65 + 0.2,
+          twinkleSpeed: Math.random() * 0.018 + 0.006,
+          phase: Math.random() * Math.PI * 2,
+        };
+      }
+
+      function spawnShootingStar() {
+        const startX = Math.random() * width * 0.8 + width * 0.1;
+        const startY = Math.random() * height * 0.35;
+        const speed = Math.random() * 6 + 7;
+        const angle = Math.PI * 0.22 + (Math.random() - 0.5) * 0.14;
+        shootingStars.push({
+          x: startX,
+          y: startY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          length: Math.random() * 75 + 55,
+          life: 1,
+          decay: Math.random() * 0.016 + 0.014,
+        });
+      }
+
+      function resize() {
+        if (!canvas || !ctx) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        rebuildStars();
+      }
+
+      function rebuildStars() {
+        const count = getTargetStarCount();
+        stars = [];
+        for (let i = 0; i < count; i++) {
+          stars.push(createStar(true));
+        }
+      }
+
+      function tick() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+
+        if (!enabled) {
+          rafId = null;
+          return;
+        }
+
+        const isLight = document.body.getAttribute("data-theme") === "light";
+        const rgb = isLight ? "17, 17, 17" : "244, 244, 245";
+
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+          s.y += s.vy;
+          s.x += s.vx;
+          s.phase += s.twinkleSpeed;
+
+          if (s.y > height + 8) {
+            stars[i] = createStar(false);
+            continue;
+          }
+          if (s.x < -8) s.x = width + 8;
+          if (s.x > width + 8) s.x = -8;
+
+          const twinkle = 0.55 + 0.45 * Math.sin(s.phase);
+          const opacity = Math.max(0.08, s.alpha * twinkle * (isLight ? 0.48 : 0.92));
+
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${rgb}, ${opacity.toFixed(3)})`;
+          ctx.fill();
+        }
+
+        // Xác suất nhỏ xuất hiện sao băng tinh tế
+        if (Math.random() < (density === "high" ? 0.008 : density === "low" ? 0.0025 : 0.0045)) {
+          spawnShootingStar();
+        }
+
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const st = shootingStars[i];
+          st.x += st.vx;
+          st.y += st.vy;
+          st.life -= st.decay;
+
+          if (st.life <= 0) {
+            shootingStars.splice(i, 1);
+            continue;
+          }
+
+          const tailX = st.x - (st.vx / Math.hypot(st.vx, st.vy)) * st.length;
+          const tailY = st.y - (st.vy / Math.hypot(st.vx, st.vy)) * st.length;
+
+          const grad = ctx.createLinearGradient(st.x, st.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(${rgb}, ${(st.life * (isLight ? 0.55 : 0.9)).toFixed(3)})`);
+          grad.addColorStop(1, `rgba(${rgb}, 0)`);
+
+          ctx.beginPath();
+          ctx.moveTo(st.x, st.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.3;
+          ctx.stroke();
+        }
+
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function configure(isEnabled, newDensity) {
+        enabled = Boolean(isEnabled);
+        density = newDensity || "medium";
+        rebuildStars();
+        if (enabled && !rafId) {
+          rafId = requestAnimationFrame(tick);
+        } else if (!enabled && ctx) {
+          ctx.clearRect(0, 0, width, height);
+        }
+      }
+
+      function init() {
+        resize();
+        window.addEventListener("resize", resize);
+        if (enabled && !rafId) {
+          rafId = requestAnimationFrame(tick);
+        }
+      }
+
+      return { init, configure };
+    })();
+
+    /* =========================================================================
+     * 6. TRÌNH PHÁT NHẠC NỀN ĐĨA THAN (FILE ≤ 6MB, LINK MP3, YOUTUBE)
+     * ========================================================================= */
+    const MusicController = (() => {
+      const widget = document.getElementById("musicWidget");
+      const audioEl = document.getElementById("bgAudioElement");
+      const vinylDisc = document.getElementById("vinylDisc");
+      const playIcon = document.getElementById("musicPlayIcon");
+      const titleEl = document.getElementById("musicTrackTitle");
+      const statusDot = document.getElementById("musicStatusDot");
+      const volumeSlider = document.getElementById("musicVolume");
+
+      let mode = "none"; // 'none' | 'audio' | 'youtube'
+      let isPlaying = false;
+      let ytPlayer = null;
+      let ytApiReady = false;
+      let pendingYtVideoId = "";
+      let currentYtVideoId = "";
+
+      window.onYouTubeIframeAPIReady = () => {
+        ytApiReady = true;
+        if (pendingYtVideoId) {
+          initOrLoadYouTube(pendingYtVideoId);
+        }
+      };
+
+      function updatePlayVisuals() {
+        if (!vinylDisc || !playIcon || !statusDot) return;
+        if (isPlaying) {
+          vinylDisc.classList.add("vinyl-spinning");
+          playIcon.innerHTML =
+            '<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+          statusDot.className = "w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0";
+        } else {
+          vinylDisc.classList.remove("vinyl-spinning");
+          playIcon.innerHTML =
+            '<svg class="w-4 h-4 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+          statusDot.className = "w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0";
+        }
+      }
+
+      function initOrLoadYouTube(videoId) {
+        currentYtVideoId = videoId;
+        if (!ytApiReady || typeof window.YT === "undefined" || !window.YT.Player) {
+          pendingYtVideoId = videoId;
+          return;
+        }
+        pendingYtVideoId = "";
+
+        if (ytPlayer && typeof ytPlayer.loadVideoById === "function") {
+          ytPlayer.cueVideoById(videoId);
+          return;
+        }
+
+        const host = document.getElementById("ytPlayerHost");
+        if (!host) return;
+        host.innerHTML = '<div id="ytInnerPlayer"></div>';
+
+        ytPlayer = new window.YT.Player("ytInnerPlayer", {
+          height: "1",
+          width: "1",
+          videoId,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            loop: 1,
+            playlist: videoId,
+            playsinline: 1,
+          },
+          events: {
+            onReady: (e) => {
+              const vol = Math.round((parseFloat(volumeSlider?.value || "0.55")) * 100);
+              e.target.setVolume(vol);
+            },
+            onStateChange: (e) => {
+              if (e.data === window.YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updatePlayVisuals();
+              } else if (
+                e.data === window.YT.PlayerState.PAUSED ||
+                e.data === window.YT.PlayerState.ENDED
+              ) {
+                isPlaying = false;
+                updatePlayVisuals();
+              }
+            },
+          },
+        });
+      }
+
+      function stopAll() {
+        isPlaying = false;
+        if (audioEl) {
+          audioEl.pause();
+          audioEl.removeAttribute("src");
+          audioEl.load();
+        }
+        if (ytPlayer && typeof ytPlayer.stopVideo === "function") {
+          try {
+            ytPlayer.stopVideo();
+          } catch (_) {}
+        }
+        updatePlayVisuals();
+      }
+
+      async function syncWithConfig(cfg) {
+        if (!widget) return;
+        const musicKey = cfg.musicMedia?.mediaId
+          ? `media:${cfg.musicMedia.mediaId}`
+          : cfg.musicUrl
+          ? `url:${cfg.musicUrl}`
+          : "none";
+
+        if (titleEl) {
+          titleEl.textContent = cfg.musicTitle?.trim() || "Giai điệu nền";
+        }
+
+        if (musicKey === "none") {
+          state.activeMusicKey = "none";
+          mode = "none";
+          stopAll();
+          widget.classList.add("hidden");
+          return;
+        }
+
+        widget.classList.remove("hidden");
+
+        // Tránh nạp lại nguồn nếu bài hát không đổi
+        if (musicKey === state.activeMusicKey) {
+          return;
+        }
+        state.activeMusicKey = musicKey;
+        stopAll();
+
+        if (cfg.musicMedia && cfg.musicMedia.mediaId) {
+          mode = "audio";
+          if (titleEl) titleEl.textContent = "Đang tải giai điệu...";
+          const resolvedUrl = await MediaChunkStorage.resolveMediaUrl(cfg.musicMedia, cfg.musicUrl);
+          if (titleEl) titleEl.textContent = cfg.musicTitle?.trim() || cfg.musicMedia.fileName || "Giai điệu nền";
+          if (resolvedUrl && audioEl) {
+            audioEl.src = resolvedUrl;
+            audioEl.volume = parseFloat(volumeSlider?.value || "0.55");
+          }
+          return;
+        }
+
+        const ytId = extractYouTubeId(cfg.musicUrl);
+        if (ytId) {
+          mode = "youtube";
+          initOrLoadYouTube(ytId);
+        } else {
+          mode = "audio";
+          const safeAudioUrl = normalizeSafeUrl(cfg.musicUrl);
+          if (safeAudioUrl && audioEl) {
+            audioEl.src = safeAudioUrl;
+            audioEl.volume = parseFloat(volumeSlider?.value || "0.55");
+          }
+        }
+      }
+
+      async function togglePlay() {
+        if (mode === "none") return;
+
+        if (mode === "youtube") {
+          if (!ytPlayer || typeof ytPlayer.playVideo !== "function") {
+            if (currentYtVideoId) initOrLoadYouTube(currentYtVideoId);
+            showToast("Đang kết nối trình phát YouTube, bấm lại sau một giây nhé.");
+            return;
+          }
+          try {
+            if (isPlaying) {
+              ytPlayer.pauseVideo();
+              isPlaying = false;
+            } else {
+              ytPlayer.playVideo();
+              isPlaying = true;
+            }
+            updatePlayVisuals();
+          } catch (err) {
+            showToast("Không thể phát link YouTube này.", "error");
+          }
+          return;
+        }
+
+        if (mode === "audio" && audioEl) {
+          if (isPlaying) {
+            audioEl.pause();
+            isPlaying = false;
+            updatePlayVisuals();
+          } else {
+            try {
+              audioEl.volume = parseFloat(volumeSlider?.value || "0.55");
+              await audioEl.play();
+              isPlaying = true;
+              updatePlayVisuals();
+            } catch (err) {
+              showToast("Không thể phát tệp âm thanh. Hãy kiểm tra lại đường dẫn hoặc định dạng nhạc.", "error");
+            }
+          }
+        }
+      }
+
+      function setVolume(val) {
+        const v = Math.max(0, Math.min(1, parseFloat(val) || 0));
+        if (audioEl) audioEl.volume = v;
+        if (ytPlayer && typeof ytPlayer.setVolume === "function") {
+          try {
+            ytPlayer.setVolume(Math.round(v * 100));
+          } catch (_) {}
+        }
+      }
+
+      function init() {
+        const btnToggle = document.getElementById("btnToggleMusic");
+        if (btnToggle) btnToggle.addEventListener("click", togglePlay);
+        if (volumeSlider) {
+          volumeSlider.addEventListener("input", (e) => setVolume(e.target.value));
+        }
+        if (audioEl) {
+          audioEl.addEventListener("ended", () => {
+            if (!audioEl.loop) {
+              isPlaying = false;
+              updatePlayVisuals();
+            }
+          });
+        }
+      }
+
+      return { init, syncWithConfig };
+    })();
+
+    /* =========================================================================
+     * 7. RENDER GIAO DIỆN (TIÊU ĐỀ, Ô GIF, BỘ LỌC TAG, LƯỚI NHÂN VẬT)
+     * ========================================================================= */
+    function applyThemeAndHeader() {
+      const cfg = state.config;
+      document.body.setAttribute("data-theme", cfg.theme === "light" ? "light" : "dark");
+      document.title = cfg.title || DEFAULT_CONFIG.title;
+
+      const titleEl = document.getElementById("displaySiteTitle");
+      const sloganEl = document.getElementById("displaySiteSlogan");
+      const descEl = document.getElementById("displaySiteDescription");
+      const footerTitleEl = document.getElementById("footerSiteTitle");
+
+      if (titleEl) titleEl.textContent = cfg.title || DEFAULT_CONFIG.title;
+      if (sloganEl) sloganEl.textContent = cfg.slogan || "";
+      if (descEl) descEl.textContent = cfg.description || "";
+      if (footerTitleEl) footerTitleEl.textContent = cfg.title || DEFAULT_CONFIG.title;
+
+      StarfieldEngine.configure(cfg.starsEnabled !== false, cfg.starsDensity || "medium");
+      MusicController.syncWithConfig(cfg);
+      renderGifSection();
+    }
+
+    /**
+     * Ô chèn GIF ngay dưới phần mô tả:
+     * - Khách truy cập: chỉ hiển thị khung GIF nghệ thuật khi đã có GIF (không lộ khung trống).
+     * - Chủ Web: luôn hiển thị khung chỉnh sửa/tải nhanh GIF (≤ 6MB) để thao tác tiện lợi.
+     */
+    async function renderGifSection() {
+      const container = document.getElementById("gifSectionContainer");
+      if (!container) return;
+
+      const cfg = state.config;
+      const gifKey = cfg.gifMedia?.mediaId
+        ? `media:${cfg.gifMedia.mediaId}`
+        : cfg.gifUrl
+        ? `url:${cfg.gifUrl}`
+        : "none";
+
+      if (gifKey === "none") {
+        state.activeGifKey = "none";
+        state.activeGifResolvedUrl = "";
+
+        if (!state.isAdmin) {
+          container.innerHTML = "";
+          container.classList.add("hidden");
+          return;
+        }
+
+        container.classList.remove("hidden");
+        container.innerHTML = `
+          <div class="w-full max-w-xl rounded-2xl border border-dashed border-line-strong bg-neutral-500/5 px-6 py-7 text-center transition hover:border-main">
+            <div class="text-dim text-sm mb-2">✦ Ô chèn GIF dưới phần mô tả ✦</div>
+            <p class="text-xs text-sub leading-relaxed mb-4">
+              Chỉ Chủ Web mới thấy khung trống này. Hãy chèn một ảnh GIF thơ mộng (tải file ≤ 6MB hoặc dán link URL) để trang web thêm phần sống động.
+            </p>
+            <button
+              type="button"
+              id="btnQuickOpenGifSettings"
+              class="btn-mono-outline rounded-xl px-4 py-2 text-xs font-medium inline-flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+              <span>Chèn GIF ngay</span>
+            </button>
+          </div>
+        `;
+        const quickBtn = document.getElementById("btnQuickOpenGifSettings");
+        if (quickBtn) quickBtn.addEventListener("click", openSettingsModal);
+        return;
+      }
+
+      container.classList.remove("hidden");
+
+      // Nếu GIF đổi mới thì giải mã từ Cache / Firestore
+      if (gifKey !== state.activeGifKey) {
+        state.activeGifKey = gifKey;
+        container.innerHTML = `
+          <div class="w-full max-w-xl h-48 sm:h-56 rounded-2xl mono-shimmer border border-line"></div>
+        `;
+        state.activeGifResolvedUrl = await MediaChunkStorage.resolveMediaUrl(cfg.gifMedia, cfg.gifUrl);
+      }
+
+      if (!state.activeGifResolvedUrl) {
+        container.innerHTML = "";
+        container.classList.add("hidden");
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="relative group w-full max-w-xl overflow-hidden rounded-2xl border border-line shadow-2xl surface-card">
+          <img
+            src="${escapeHtml(state.activeGifResolvedUrl)}"
+            alt="Ảnh động trang trí"
+            class="w-full max-h-[340px] object-cover block mx-auto"
+            onerror="this.closest('#gifSectionContainer').classList.add('hidden')"
+          />
+          ${
+            state.isAdmin
+              ? `
+                <button
+                  type="button"
+                  id="btnEditGifOverlay"
+                  class="absolute top-3 right-3 rounded-xl px-3 py-1.5 text-xs font-medium bg-black/75 text-white border border-white/25 backdrop-blur-md opacity-95 sm:opacity-0 sm:group-hover:opacity-100 transition hover:bg-black"
+                >
+                  Đổi / Gỡ GIF
+                </button>
+              `
+              : ""
+          }
+        </div>
+      `;
+
+      const overlayBtn = document.getElementById("btnEditGifOverlay");
+      if (overlayBtn) overlayBtn.addEventListener("click", openSettingsModal);
+    }
+
+    /**
+     * Thanh lọc theo Tag (tự tổng hợp tất cả tag từ danh sách nhân vật)
+     */
+    function renderTagFilters() {
+      const bar = document.getElementById("tagFilterBar");
+      if (!bar) return;
+
+      const tagSet = new Set();
+      state.characters.forEach((ch) => {
+        if (Array.isArray(ch.tags)) {
+          ch.tags.forEach((t) => {
+            const clean = String(t || "").trim();
+            if (clean) tagSet.add(clean);
+          });
+        }
+      });
+
+      const tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b, "vi"));
+      if (state.activeTag !== "ALL" && !tagSet.has(state.activeTag)) {
+        state.activeTag = "ALL";
+      }
+
+      const items = [{ label: "Tất cả", value: "ALL" }, ...tags.map((t) => ({ label: `#${t}`, value: t }))];
+
+      bar.innerHTML = items
+        .map((item) => {
+          const isActive = state.activeTag === item.value;
+          const cls = isActive
+            ? "btn-mono-primary rounded-full px-3.5 py-1.5 text-xs font-medium"
+            : "rounded-full px-3.5 py-1.5 text-xs border border-line text-sub hover:border-line-strong hover:text-main transition";
+          return `<button type="button" data-tag-value="${escapeHtml(item.value)}" class="${cls}">${escapeHtml(item.label)}</button>`;
+        })
+        .join("");
+
+      bar.querySelectorAll("button[data-tag-value]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.activeTag = btn.getAttribute("data-tag-value") || "ALL";
+          renderTagFilters();
+          renderCharacters();
+        });
+      });
+    }
+
+    /**
+     * Render danh sách thẻ nhân vật Chatbot AI + Link Plot
+     */
+    function renderCharacters() {
+      const loadingEl = document.getElementById("loadingState");
+      const gridEl = document.getElementById("charactersGrid");
+      const emptyEl = document.getElementById("emptyState");
+      const countEl = document.getElementById("charCountLabel");
+
+      if (loadingEl) loadingEl.classList.add("hidden");
+      if (!gridEl || !emptyEl) return;
+
+      const q = normalizeVietnamese(state.searchQuery);
+      const filtered = state.characters
+        .slice()
+        .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
+        .filter((ch) => {
+          const tags = Array.isArray(ch.tags) ? ch.tags : [];
+          if (state.activeTag !== "ALL" && !tags.includes(state.activeTag)) {
+            return false;
+          }
+          if (!q) return true;
+          const haystack = normalizeVietnamese(`${ch.name || ""} ${ch.quote || ""} ${tags.join(" ")}`);
+          return haystack.includes(q);
+        });
+
+      if (countEl) {
+        countEl.textContent = `${filtered.length} / ${state.characters.length} nhân vật`;
+      }
+
+      if (filtered.length === 0) {
+        gridEl.classList.add("hidden");
+        emptyEl.classList.remove("hidden");
+        return;
+      }
+
+      emptyEl.classList.add("hidden");
+      gridEl.classList.remove("hidden");
+
+      const fallbackPlaceholder = (name) =>
+        `https://placehold.co/600x720/141418/f4f4f5?text=${encodeURIComponent(name || "Character")}`;
+
+      gridEl.innerHTML = filtered
+        .map((ch) => {
+          const safeName = escapeHtml(ch.name || "Nhân vật vô danh");
+          const safeQuote = escapeHtml(ch.quote || "");
+          const safeCharUrl = normalizeSafeUrl(ch.charLink);
+          const safePlotUrl = normalizeSafeUrl(ch.plotLink);
+          const tags = Array.isArray(ch.tags) ? ch.tags : [];
+          const hasChunkAvatar = Boolean(ch.avatarMedia && ch.avatarMedia.mediaId);
+          const initialImgSrc = hasChunkAvatar
+            ? ""
+            : normalizeSafeUrl(ch.avatarUrl) || fallbackPlaceholder(ch.name);
+
+          return `
+            <article class="surface-card rounded-2xl overflow-hidden flex flex-col group">
+              <!-- Khung ảnh đại diện nhân vật -->
+              <div class="relative aspect-[4/4.3] overflow-hidden bg-neutral-900 border-b border-line">
+                <div
+                  class="char-img-shimmer absolute inset-0 mono-shimmer ${hasChunkAvatar ? "" : "hidden"}"
+                  data-shimmer-for="${escapeHtml(ch.id)}"
+                ></div>
+                <img
+                  data-char-img="${escapeHtml(ch.id)}"
+                  src="${escapeHtml(initialImgSrc)}"
+                  alt="${safeName}"
+                  loading="lazy"
+                  class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-[1.03] ${hasChunkAvatar ? "opacity-0" : "opacity-100"}"
+                  onerror="this.src='${fallbackPlaceholder(ch.name)}'; this.classList.remove('opacity-0');"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-70 pointer-events-none"></div>
+
+                ${
+                  state.isAdmin
+                    ? `
+                      <div class="absolute top-3 right-3 flex items-center gap-1.5 z-10">
+                        <button
+                          type="button"
+                          data-edit-char="${escapeHtml(ch.id)}"
+                          class="rounded-xl px-2.5 py-1.5 text-[11px] font-medium bg-black/75 text-white border border-white/25 backdrop-blur-md hover:bg-black transition"
+                          title="Chỉnh sửa nhân vật"
+                        >
+                          Sửa
+                        </button>
+                        <button
+                          type="button"
+                          data-delete-char="${escapeHtml(ch.id)}"
+                          class="rounded-xl px-2.5 py-1.5 text-[11px] font-medium bg-red-950/80 text-red-200 border border-red-400/35 backdrop-blur-md hover:bg-red-900 transition"
+                          title="Xóa nhân vật"
+                        >
+                          Xóa
+                        </button>
+                      </div>
+                    `
+                    : ""
+                }
+              </div>
+
+              <!-- Nội dung chữ, tag và nút chuyển hướng -->
+              <div class="p-5 flex-1 flex flex-col">
+                <h3 class="font-display text-xl font-medium text-main leading-snug">${safeName}</h3>
+                ${
+                  safeQuote
+                    ? `<p class="font-poetic italic text-xs sm:text-[13px] text-sub leading-relaxed mt-2.5 line-clamp-3">${safeQuote}</p>`
+                    : ""
+                }
+
+                ${
+                  tags.length > 0
+                    ? `
+                      <div class="flex flex-wrap gap-1.5 mt-4">
+                        ${tags
+                          .map(
+                            (tag) =>
+                              `<span class="text-[11px] px-2.5 py-0.5 rounded-full border border-line text-dim">#${escapeHtml(tag)}</span>`
+                          )
+                          .join("")}
+                      </div>
+                    `
+                    : ""
+                }
+
+                <div class="mt-auto pt-5 flex flex-wrap items-center gap-2.5">
+                  ${
+                    safeCharUrl
+                      ? `
+                        <a
+                          href="${escapeHtml(safeCharUrl)}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="btn-mono-primary flex-1 min-w-[120px] rounded-xl px-4 py-2.5 text-xs font-medium inline-flex items-center justify-center gap-1.5 text-center"
+                        >
+                          <span>Trò chuyện</span>
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                        </a>
+                      `
+                      : `
+                        <span class="flex-1 min-w-[120px] rounded-xl px-4 py-2.5 text-xs text-dim border border-line text-center opacity-60 cursor-not-allowed">
+                          Chưa gắn link Bot
+                        </span>
+                      `
+                  }
+
+                  ${
+                    safePlotUrl
+                      ? `
+                        <a
+                          href="${escapeHtml(safePlotUrl)}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="btn-mono-outline flex-1 min-w-[110px] rounded-xl px-4 py-2.5 text-xs font-medium inline-flex items-center justify-center gap-1.5 text-center"
+                        >
+                          <span>Xem Plot</span>
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+                        </a>
+                      `
+                      : ""
+                  }
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+
+      // Giải mã bất đồng bộ các ảnh / GIF lớn (≤ 6MB) đã lưu theo mảnh
+      filtered.forEach(async (ch) => {
+        if (ch.avatarMedia && ch.avatarMedia.mediaId) {
+          const url = await MediaChunkStorage.resolveMediaUrl(ch.avatarMedia, ch.avatarUrl);
+          const imgEl = gridEl.querySelector(`img[data-char-img="${CSS.escape(ch.id)}"]`);
+          const shimmerEl = gridEl.querySelector(`[data-shimmer-for="${CSS.escape(ch.id)}"]`);
+          if (imgEl) {
+            imgEl.src = url || fallbackPlaceholder(ch.name);
+            imgEl.classList.remove("opacity-0");
+            imgEl.classList.add("opacity-100");
+          }
+          if (shimmerEl) shimmerEl.classList.add("hidden");
+        }
+      });
+
+      // Gắn sự kiện Sửa / Xóa cho Chủ Web
+      if (state.isAdmin) {
+        gridEl.querySelectorAll("button[data-edit-char]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-edit-char");
+            const found = state.characters.find((c) => c.id === id);
+            if (found) openCharModal(found);
+          });
+        });
+
+        gridEl.querySelectorAll("button[data-delete-char]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-delete-char");
+            const found = state.characters.find((c) => c.id === id);
+            if (!found) return;
+            showConfirmModal(
+              `Bạn có chắc muốn xóa nhân vật “${found.name}” khỏi trang web không?`,
+              () => deleteCharacter(found)
+            );
+          });
+        });
+      }
+    }
+
+    function updateAdminUI() {
+      const adminBar = document.getElementById("adminBar");
+      const mainWrapper = document.getElementById("mainWrapper");
+      if (adminBar) adminBar.classList.toggle("hidden", !state.isAdmin);
+      if (mainWrapper) {
+        mainWrapper.classList.toggle("pt-14", state.isAdmin);
+      }
+      renderGifSection();
+      renderCharacters();
+    }
+
+    /* =========================================================================
+     * 8. QUẢN LÝ PHÂN QUYỀN & MẬT KHẨU CHỦ WEB
+     * ========================================================================= */
+    function checkStoredAdminSession() {
+      const storedHash = sessionStorage.getItem(SESSION_KEY_PREFIX + appId);
+      if (storedHash && state.config.adminPasswordHash && storedHash === state.config.adminPasswordHash) {
+        state.isAdmin = true;
+      } else {
+        state.isAdmin = false;
+      }
+      updateAdminUI();
+    }
+
+    function openAuthModal(mode) {
+      state.authMode = mode;
+      const titleEl = document.getElementById("authModalTitle");
+      const subEl = document.getElementById("authModalSubtitle");
+      const oldGroup = document.getElementById("authOldPasswordGroup");
+      const confirmGroup = document.getElementById("authConfirmGroup");
+      const pwLabel = document.getElementById("authPasswordLabel");
+      const submitBtn = document.getElementById("authSubmitBtn");
+      const errEl = document.getElementById("authErrorMsg");
+
+      document.getElementById("authOldPassword").value = "";
+      document.getElementById("authPassword").value = "";
+      document.getElementById("authPasswordConfirm").value = "";
+      errEl.classList.add("hidden");
+
+      if (mode === "setup") {
+        titleEl.textContent = "Thiết Lập Mật Khẩu Chủ Web";
+        subEl.textContent =
+          "Đây là lần đầu bạn mở khóa quyền quản trị. Hãy đặt mật khẩu riêng để chỉ bạn mới có thể chỉnh sửa trang web.";
+        oldGroup.classList.add("hidden");
+        confirmGroup.classList.remove("hidden");
+        pwLabel.textContent = "Tạo mật khẩu Chủ Web (tối thiểu 4 ký tự)";
+        submitBtn.textContent = "Khởi tạo & Mở khóa";
+      } else if (mode === "change") {
+        titleEl.textContent = "Đổi Mật Khẩu Chủ Web";
+        subEl.textContent = "Nhập mật khẩu cũ và mật khẩu mới để cập nhật quyền bảo mật.";
+        oldGroup.classList.remove("hidden");
+        confirmGroup.classList.remove("hidden");
+        pwLabel.textContent = "Mật khẩu mới";
+        submitBtn.textContent = "Cập nhật mật khẩu";
+      } else {
+        titleEl.textContent = "Đăng Nhập Chủ Web";
+        subEl.textContent = "Nhập mật khẩu Chủ Web để thêm nhân vật, đổi nhạc, GIF và cài đặt giao diện.";
+        oldGroup.classList.add("hidden");
+        confirmGroup.classList.add("hidden");
+        pwLabel.textContent = "Mật khẩu Chủ Web";
+        submitBtn.textContent = "Mở khóa";
+      }
+
+      openModal("modalAuth");
+      setTimeout(() => {
+        const focusEl = mode === "change" ? document.getElementById("authOldPassword") : document.getElementById("authPassword");
+        if (focusEl) focusEl.focus();
+      }, 60);
+    }
+
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const errEl = document.getElementById("authErrorMsg");
+      const oldPw = document.getElementById("authOldPassword").value;
+      const pw = document.getElementById("authPassword").value;
+      const confirmPw = document.getElementById("authPasswordConfirm").value;
+
+      const showErr = (msg) => {
+        errEl.textContent = msg;
+        errEl.classList.remove("hidden");
+      };
+
+      try {
+        if (state.authMode === "setup") {
+          if (pw.length < 4) return showErr("Mật khẩu nên có ít nhất 4 ký tự.");
+          if (pw !== confirmPw) return showErr("Mật khẩu xác nhận không khớp.");
+          const hashed = await hashPassword(pw);
+          await saveConfigPatch({ adminPasswordHash: hashed });
+          sessionStorage.setItem(SESSION_KEY_PREFIX + appId, hashed);
+          state.isAdmin = true;
+          closeModal("modalAuth");
+          updateAdminUI();
+          showToast("Đã thiết lập mật khẩu & mở khóa chế độ Chủ Web!", "success");
+          return;
+        }
+
+        if (state.authMode === "change") {
+          const oldHashed = await hashPassword(oldPw);
+          if (oldHashed !== state.config.adminPasswordHash) {
+            return showErr("Mật khẩu hiện tại chưa chính xác.");
+          }
+          if (pw.length < 4) return showErr("Mật khẩu mới nên có ít nhất 4 ký tự.");
+          if (pw !== confirmPw) return showErr("Mật khẩu xác nhận không khớp.");
+          const newHashed = await hashPassword(pw);
+          await saveConfigPatch({ adminPasswordHash: newHashed });
+          sessionStorage.setItem(SESSION_KEY_PREFIX + appId, newHashed);
+          closeModal("modalAuth");
+          showToast("Đã đổi mật khẩu Chủ Web thành công!", "success");
+          return;
+        }
+
+        // Đăng nhập thông thường
+        const hashed = await hashPassword(pw);
+        if (hashed !== state.config.adminPasswordHash) {
+          return showErr("Mật khẩu không đúng. Chỉ Chủ Web mới có quyền truy cập.");
+        }
+        sessionStorage.setItem(SESSION_KEY_PREFIX + appId, hashed);
+        state.isAdmin = true;
+        closeModal("modalAuth");
+        updateAdminUI();
+        showToast("Chào mừng Chủ Web quay trở lại!", "success");
+      } catch (err) {
+        console.error(err);
+        showErr("Đã có lỗi xảy ra khi xác thực. Vui lòng thử lại.");
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem(SESSION_KEY_PREFIX + appId);
+      state.isAdmin = false;
+      updateAdminUI();
+      showToast("Đã đăng xuất và khóa quyền chỉnh sửa.");
+    }
+
+    /* =========================================================================
+     * 9. LƯU CẤU HÌNH WEB & THÊM / SỬA / XÓA NHÂN VẬT
+     * ========================================================================= */
+    async function saveConfigPatch(patch) {
+      state.config = { ...state.config, ...patch };
+      if (state.isFirebaseReady && db) {
+        const cfgRef = doc(db, "artifacts", appId, "public", "data", "site_config", "main");
+        await setDoc(cfgRef, state.config, { merge: true });
+      } else {
+        saveLocalFallback();
+      }
+      applyThemeAndHeader();
+    }
+
+    async function openCharModal(character = null) {
+      if (!state.isAdmin) return;
+      state.pendingAvatarFile = null;
+      state.pendingAvatarRemoved = false;
+      state.editingCharSnapshot = character ? { ...character } : null;
+
+      document.getElementById("charModalHeading").textContent = character
+        ? "Chỉnh Sửa Nhân Vật"
+        : "Thêm Nhân Vật Mới";
+      document.getElementById("charEditId").value = character ? character.id : "";
+      document.getElementById("charName").value = character ? character.name || "" : "";
+      document.getElementById("charQuote").value = character ? character.quote || "" : "";
+      document.getElementById("charLink").value = character ? character.charLink || "" : "";
+      document.getElementById("charPlotLink").value = character ? character.plotLink || "" : "";
+      document.getElementById("charTags").value = character && Array.isArray(character.tags) ? character.tags.join(", ") : "";
+      document.getElementById("charAvatarUrl").value = character && !character.avatarMedia ? character.avatarUrl || "" : "";
+      document.getElementById("charAvatarFile").value = "";
+      document.getElementById("charAvatarStatus").textContent =
+        character?.avatarMedia
+          ? `Đang dùng tệp đã tải lên: ${character.avatarMedia.fileName} (${formatBytes(character.avatarMedia.size)})`
+          : "Hỗ trợ JPG, PNG, WebP và GIF động giữ nguyên chuyển động lên đến 6MB.";
+      setProgressUI("char", false);
+
+      const previewImg = document.getElementById("charAvatarPreview");
+      const emptyLabel = document.getElementById("charAvatarEmpty");
+      previewImg.classList.add("hidden");
+      emptyLabel.classList.remove("hidden");
+
+      openModal("modalChar");
+
+      if (character && (character.avatarMedia || character.avatarUrl)) {
+        const resolved = await MediaChunkStorage.resolveMediaUrl(character.avatarMedia, character.avatarUrl);
+        if (resolved) {
+          previewImg.src = resolved;
+          previewImg.classList.remove("hidden");
+          emptyLabel.classList.add("hidden");
+        }
+      }
+    }
+
+    async function handleCharSubmit(e) {
+      e.preventDefault();
+      if (!state.isAdmin) return;
+
+      const saveBtn = document.getElementById("btnSaveChar");
+      const editId = document.getElementById("charEditId").value.trim();
+      const name = document.getElementById("charName").value.trim();
+      if (!name) {
+        showToast("Vui lòng nhập tên nhân vật.", "error");
+        return;
+      }
+
+      const quote = document.getElementById("charQuote").value.trim();
+      const charLink = normalizeSafeUrl(document.getElementById("charLink").value);
+      const plotLink = normalizeSafeUrl(document.getElementById("charPlotLink").value);
+      const tags = document
+        .getElementById("charTags")
+        .value.split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+      const manualAvatarUrl = normalizeSafeUrl(document.getElementById("charAvatarUrl").value);
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Đang lưu...";
+
+      try {
+        let avatarMedia = state.editingCharSnapshot?.avatarMedia || null;
+        let avatarUrl = state.editingCharSnapshot?.avatarUrl || "";
+        let oldMediaToDelete = null;
+
+        if (state.pendingAvatarFile) {
+          setProgressUI("char", true, 5, "Đang tải ảnh/GIF nhân vật...");
+          const uploadedMeta = await MediaChunkStorage.uploadFile(state.pendingAvatarFile, (pct, msg) => {
+            setProgressUI("char", true, pct, msg);
+          });
+          if (avatarMedia && avatarMedia.mediaId) oldMediaToDelete = avatarMedia;
+          avatarMedia = uploadedMeta;
+          avatarUrl = "";
+        } else if (state.pendingAvatarRemoved) {
+          if (avatarMedia && avatarMedia.mediaId) oldMediaToDelete = avatarMedia;
+          avatarMedia = null;
+          avatarUrl = "";
+        } else if (manualAvatarUrl) {
+          if (avatarMedia && avatarMedia.mediaId) oldMediaToDelete = avatarMedia;
+          avatarMedia = null;
+          avatarUrl = manualAvatarUrl;
+        }
+
+        const payload = {
+          name,
+          quote,
+          charLink,
+          plotLink,
+          tags,
+          avatarUrl,
+          avatarMedia,
+          updatedAt: Date.now(),
+        };
+
+        if (editId) {
+          if (state.isFirebaseReady && db) {
+            const ref = doc(db, "artifacts", appId, "public", "data", "characters", editId);
+            await updateDoc(ref, payload);
+          } else {
+            state.characters = state.characters.map((c) =>
+              c.id === editId ? { ...c, ...payload } : c
+            );
+            saveLocalFallback();
+            renderTagFilters();
+            renderCharacters();
+          }
+          showToast("Đã cập nhật thông tin nhân vật!", "success");
+        } else {
+          payload.createdAt = Date.now();
+          if (state.isFirebaseReady && db) {
+            const colRef = collection(db, "artifacts", appId, "public", "data", "characters");
+            await addDoc(colRef, payload);
+          } else {
+            state.characters.unshift({ id: `local_${Date.now()}`, ...payload });
+            saveLocalFallback();
+            renderTagFilters();
+            renderCharacters();
+          }
+          showToast("Đã thêm nhân vật mới!", "success");
+        }
+
+        if (oldMediaToDelete) {
+          MediaChunkStorage.deleteMedia(oldMediaToDelete).catch(() => {});
+        }
+
+        closeModal("modalChar");
+      } catch (err) {
+        console.error(err);
+        showToast(err.message || "Không thể lưu nhân vật. Vui lòng thử lại.", "error");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Lưu nhân vật";
+        setProgressUI("char", false);
+      }
+    }
+
+    async function deleteCharacter(character) {
+      if (!state.isAdmin || !character) return;
+      try {
+        if (character.avatarMedia && character.avatarMedia.mediaId) {
+          await MediaChunkStorage.deleteMedia(character.avatarMedia).catch(() => {});
+        }
+        if (state.isFirebaseReady && db) {
+          const ref = doc(db, "artifacts", appId, "public", "data", "characters", character.id);
+          await deleteDoc(ref);
+        } else {
+          state.characters = state.characters.filter((c) => c.id !== character.id);
+          saveLocalFallback();
+          renderTagFilters();
+          renderCharacters();
+        }
+        showToast(`Đã xóa nhân vật “${character.name}”.`);
+      } catch (err) {
+        console.error(err);
+        showToast("Lỗi khi xóa nhân vật.", "error");
+      }
+    }
+
+    async function openSettingsModal() {
+      if (!state.isAdmin) return;
+      const cfg = state.config;
+      state.pendingGifFile = null;
+      state.pendingGifRemoved = false;
+      state.pendingMusicFile = null;
+      state.pendingMusicRemoved = false;
+
+      document.getElementById("setSiteTitle").value = cfg.title || "";
+      document.getElementById("setSiteSlogan").value = cfg.slogan || "";
+      document.getElementById("setSiteDesc").value = cfg.description || "";
+      document.getElementById("setGifUrl").value = !cfg.gifMedia ? cfg.gifUrl || "" : "";
+      document.getElementById("setGifFile").value = "";
+      document.getElementById("setGifNote").textContent = cfg.gifMedia
+        ? `Đang dùng tệp GIF đã tải lên: ${cfg.gifMedia.fileName} (${formatBytes(cfg.gifMedia.size)})`
+        : "Hỗ trợ tải trực tiếp GIF động lên đến 6MB (giữ nguyên chuyển động mượt) hoặc dán link URL.";
+
+      document.getElementById("setMusicTitle").value = cfg.musicTitle || "";
+      document.getElementById("setMusicUrl").value = !cfg.musicMedia ? cfg.musicUrl || "" : "";
+      document.getElementById("setMusicFile").value = "";
+      document.getElementById("setMusicNote").textContent = cfg.musicMedia
+        ? `Đang dùng tệp nhạc đã tải lên: ${cfg.musicMedia.fileName} (${formatBytes(cfg.musicMedia.size)})`
+        : "Giữ nguyên chất lượng âm thanh gốc khi tải lên đến 6MB, hoặc hỗ trợ phát ổn định từ YouTube / link MP3.";
+
+      const themeRadio = document.querySelector(`input[name="themeMode"][value="${cfg.theme === "light" ? "light" : "dark"}"]`);
+      if (themeRadio) themeRadio.checked = true;
+      document.getElementById("setStarsEnabled").checked = cfg.starsEnabled !== false;
+      document.getElementById("setStarsDensity").value = cfg.starsDensity || "medium";
+
+      setProgressUI("gif", false);
+      setProgressUI("music", false);
+
+      const gifPreview = document.getElementById("setGifPreview");
+      const gifEmpty = document.getElementById("setGifEmpty");
+      gifPreview.classList.add("hidden");
+      gifEmpty.classList.remove("hidden");
+
+      openModal("modalSettings");
+
+      if (cfg.gifMedia || cfg.gifUrl) {
+        const resolved = await MediaChunkStorage.resolveMediaUrl(cfg.gifMedia, cfg.gifUrl);
+        if (resolved) {
+          gifPreview.src = resolved;
+          gifPreview.classList.remove("hidden");
+          gifEmpty.classList.add("hidden");
+        }
+      }
+    }
+
+    async function handleSettingsSubmit(e) {
+      e.preventDefault();
+      if (!state.isAdmin) return;
+
+      const saveBtn = document.getElementById("btnSaveSettings");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Đang đồng bộ...";
+
+      try {
+        const title = document.getElementById("setSiteTitle").value.trim() || DEFAULT_CONFIG.title;
+        const slogan = document.getElementById("setSiteSlogan").value.trim();
+        const description = document.getElementById("setSiteDesc").value.trim();
+        const musicTitle = document.getElementById("setMusicTitle").value.trim() || "Giai điệu nền";
+        const manualGifUrl = normalizeSafeUrl(document.getElementById("setGifUrl").value);
+        const manualMusicUrl = normalizeSafeUrl(document.getElementById("setMusicUrl").value);
+        const selectedTheme = document.querySelector('input[name="themeMode"]:checked')?.value || "dark";
+        const starsEnabled = document.getElementById("setStarsEnabled").checked;
+        const starsDensity = document.getElementById("setStarsDensity").value || "medium";
+
+        let gifMedia = state.config.gifMedia || null;
+        let gifUrl = state.config.gifUrl || "";
+        let oldGifMedia = null;
+
+        if (state.pendingGifFile) {
+          setProgressUI("gif", true, 5, "Đang tải GIF lên máy chủ...");
+          const uploadedGif = await MediaChunkStorage.uploadFile(state.pendingGifFile, (pct, msg) => {
+            setProgressUI("gif", true, pct, msg);
+          });
+          if (gifMedia && gifMedia.mediaId) oldGifMedia = gifMedia;
+          gifMedia = uploadedGif;
+          gifUrl = "";
+        } else if (state.pendingGifRemoved) {
+          if (gifMedia && gifMedia.mediaId) oldGifMedia = gifMedia;
+          gifMedia = null;
+          gifUrl = "";
+        } else if (manualGifUrl) {
+          if (gifMedia && gifMedia.mediaId) oldGifMedia = gifMedia;
+          gifMedia = null;
+          gifUrl = manualGifUrl;
+        }
+
+        let musicMedia = state.config.musicMedia || null;
+        let musicUrl = state.config.musicUrl || "";
+        let oldMusicMedia = null;
+
+        if (state.pendingMusicFile) {
+          setProgressUI("music", true, 5, "Đang tải tệp nhạc lên máy chủ...");
+          const uploadedMusic = await MediaChunkStorage.uploadFile(state.pendingMusicFile, (pct, msg) => {
+            setProgressUI("music", true, pct, msg);
+          });
+          if (musicMedia && musicMedia.mediaId) oldMusicMedia = musicMedia;
+          musicMedia = uploadedMusic;
+          musicUrl = "";
+        } else if (state.pendingMusicRemoved) {
+          if (musicMedia && musicMedia.mediaId) oldMusicMedia = musicMedia;
+          musicMedia = null;
+          musicUrl = "";
+        } else if (manualMusicUrl) {
+          if (musicMedia && musicMedia.mediaId) oldMusicMedia = musicMedia;
+          musicMedia = null;
+          musicUrl = manualMusicUrl;
+        }
+
+        await saveConfigPatch({
+          title,
+          slogan,
+          description,
+          gifUrl,
+          gifMedia,
+          musicUrl,
+          musicMedia,
+          musicTitle,
+          theme: selectedTheme,
+          starsEnabled,
+          starsDensity,
+        });
+
+        if (oldGifMedia) MediaChunkStorage.deleteMedia(oldGifMedia).catch(() => {});
+        if (oldMusicMedia) MediaChunkStorage.deleteMedia(oldMusicMedia).catch(() => {});
+
+        closeModal("modalSettings");
+        showToast("Đã lưu toàn bộ cài đặt trang web!", "success");
+      } catch (err) {
+        console.error(err);
+        showToast(err.message || "Không thể lưu cài đặt. Vui lòng thử lại.", "error");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Lưu thay đổi";
+        setProgressUI("gif", false);
+        setProgressUI("music", false);
+      }
+    }
+
+    /* =========================================================================
+     * 10. KẾT NỐI FIREBASE FIRESTORE & ĐỒNG BỘ THỜI GIAN THỰC
+     * ========================================================================= */
+    async function initFirebaseAndSync() {
+      try {
+        let firebaseConfig = null;
+
+        // Ưu tiên cấu hình Firebase riêng của bạn nếu đã điền vào CUSTOM_FIREBASE_CONFIG
+        if (CUSTOM_FIREBASE_CONFIG.apiKey && CUSTOM_FIREBASE_CONFIG.projectId) {
+          firebaseConfig = CUSTOM_FIREBASE_CONFIG;
+        } else if (typeof __firebase_config !== "undefined" && __firebase_config) {
+          firebaseConfig = JSON.parse(__firebase_config);
+        }
+
+        if (!firebaseConfig) {
+          throw new Error("Chưa gắn cấu hình Firebase, chuyển sang chế độ cục bộ.");
+        }
+
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+
+        if (typeof __initial_auth_token !== "undefined" && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        state.isFirebaseReady = true;
+        state.currentUser = auth.currentUser;
+
+        const cfgRef = doc(db, "artifacts", appId, "public", "data", "site_config", "main");
+        const charsCol = collection(db, "artifacts", appId, "public", "data", "characters");
+
+        // Khởi tạo dữ liệu mẫu lần đầu nếu kho Firestore còn trống
+        const cfgSnap = await getDoc(cfgRef);
+        if (!cfgSnap.exists()) {
+          await setDoc(cfgRef, { ...DEFAULT_CONFIG, seeded: true });
+          for (const sample of SAMPLE_CHARACTERS) {
+            const { id, ...sampleData } = sample;
+            await addDoc(charsCol, sampleData);
+          }
+        }
+
+        // Lắng nghe thay đổi cấu hình trang web theo thời gian thực
+        onSnapshot(
+          cfgRef,
+          (snap) => {
+            if (snap.exists()) {
+              state.config = { ...DEFAULT_CONFIG, ...snap.data() };
+            }
+            checkStoredAdminSession();
+            applyThemeAndHeader();
+          },
+          (err) => {
+            console.warn("Lỗi đồng bộ site_config:", err);
+          }
+        );
+
+        // Lắng nghe danh sách nhân vật theo thời gian thực
+        onSnapshot(
+          charsCol,
+          (snapshot) => {
+            state.characters = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+            renderTagFilters();
+            renderCharacters();
+          },
+          (err) => {
+            console.warn("Lỗi đồng bộ characters:", err);
+          }
+        );
+      } catch (err) {
+        console.info("Chạy ở chế độ cục bộ:", err.message);
+        state.isFirebaseReady = false;
+        loadLocalFallback();
+        checkStoredAdminSession();
+        applyThemeAndHeader();
+        renderTagFilters();
+        renderCharacters();
+      }
+    }
+
+    /* =========================================================================
+     * 11. GẮN TOÀN BỘ SỰ KIỆN GIAO DIỆN & KHỞI CHẠY ỨNG DỤNG
+     * ========================================================================= */
+    function bindEvents() {
+      // Tìm kiếm thời gian thực
+      const searchInput = document.getElementById("searchInput");
+      const btnClearSearch = document.getElementById("btnClearSearch");
+
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          state.searchQuery = e.target.value;
+          if (btnClearSearch) {
+            btnClearSearch.classList.toggle("hidden", !state.searchQuery);
+          }
+          renderCharacters();
+        });
+      }
+
+      if (btnClearSearch) {
+        btnClearSearch.addEventListener("click", () => {
+          state.searchQuery = "";
+          if (searchInput) searchInput.value = "";
+          btnClearSearch.classList.add("hidden");
+          renderCharacters();
+        });
+      }
+
+      // Biểu tượng chìa khóa Chủ Web ở chân trang
+      const btnAdminKey = document.getElementById("btnAdminKey");
+      if (btnAdminKey) {
+        btnAdminKey.addEventListener("click", () => {
+          if (state.isAdmin) {
+            openSettingsModal();
+            return;
+          }
+          if (!state.config.adminPasswordHash) {
+            openAuthModal("setup");
+          } else {
+            openAuthModal("login");
+          }
+        });
+      }
+
+      // Thanh quản trị Chủ Web
+      document.getElementById("btnAddChar")?.addEventListener("click", () => openCharModal(null));
+      document.getElementById("btnOpenSettings")?.addEventListener("click", openSettingsModal);
+      document.getElementById("btnLogoutAdmin")?.addEventListener("click", logoutAdmin);
+      document.getElementById("btnCopyShareLink")?.addEventListener("click", () => {
+        const ok = copyTextToClipboard(window.location.href);
+        if (ok) {
+          showToast("Đã sao chép đường link trang web để gửi cho mọi người!", "success");
+        } else {
+          showToast("Không thể tự sao chép, hãy copy trực tiếp từ thanh địa chỉ.", "error");
+        }
+      });
+
+      // Form xác thực, nhân vật, cài đặt
+      document.getElementById("authForm")?.addEventListener("submit", handleAuthSubmit);
+      document.getElementById("charForm")?.addEventListener("submit", handleCharSubmit);
+      document.getElementById("settingsForm")?.addEventListener("submit", handleSettingsSubmit);
+      document.getElementById("btnChangePasswordFromSettings")?.addEventListener("click", () => {
+        closeModal("modalSettings");
+        openAuthModal("change");
+      });
+
+      // Xử lý chọn tệp Ảnh/GIF đại diện nhân vật (≤ 6MB)
+      document.getElementById("charAvatarFile")?.addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        if (file.size > MAX_UPLOAD_BYTES) {
+          showToast(`Ảnh vượt quá 6MB (${formatBytes(file.size)}). Vui lòng chọn tệp nhẹ hơn.`, "error");
+          e.target.value = "";
+          return;
+        }
+        state.pendingAvatarFile = file;
+        state.pendingAvatarRemoved = false;
+        document.getElementById("charAvatarUrl").value = "";
+        document.getElementById("charAvatarStatus").textContent = `Đã chọn: ${file.name} (${formatBytes(file.size)})`;
+        const preview = document.getElementById("charAvatarPreview");
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove("hidden");
+        document.getElementById("charAvatarEmpty").classList.add("hidden");
+      });
+
+      document.getElementById("charAvatarUrl")?.addEventListener("input", (e) => {
+        const url = normalizeSafeUrl(e.target.value);
+        if (url) {
+          state.pendingAvatarFile = null;
+          state.pendingAvatarRemoved = false;
+          const preview = document.getElementById("charAvatarPreview");
+          preview.src = url;
+          preview.classList.remove("hidden");
+          document.getElementById("charAvatarEmpty").classList.add("hidden");
+        }
+      });
+
+      document.getElementById("btnClearAvatar")?.addEventListener("click", () => {
+        state.pendingAvatarFile = null;
+        state.pendingAvatarRemoved = true;
+        document.getElementById("charAvatarFile").value = "";
+        document.getElementById("charAvatarUrl").value = "";
+        document.getElementById("charAvatarPreview").classList.add("hidden");
+        document.getElementById("charAvatarEmpty").classList.remove("hidden");
+        document.getElementById("charAvatarStatus").textContent = "Đã gỡ ảnh đại diện.";
+      });
+
+      // Xử lý chọn tệp GIF trang chủ (≤ 6MB)
+      document.getElementById("setGifFile")?.addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        if (file.size > MAX_UPLOAD_BYTES) {
+          showToast(`File GIF vượt quá 6MB (${formatBytes(file.size)}). Vui lòng nén nhẹ hơn.`, "error");
+          e.target.value = "";
+          return;
+        }
+        state.pendingGifFile = file;
+        state.pendingGifRemoved = false;
+        document.getElementById("setGifUrl").value = "";
+        document.getElementById("setGifNote").textContent = `Đã chọn: ${file.name} (${formatBytes(file.size)})`;
+        const preview = document.getElementById("setGifPreview");
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove("hidden");
+        document.getElementById("setGifEmpty").classList.add("hidden");
+      });
+
+      document.getElementById("setGifUrl")?.addEventListener("input", (e) => {
+        const url = normalizeSafeUrl(e.target.value);
+        if (url) {
+          state.pendingGifFile = null;
+          state.pendingGifRemoved = false;
+          const preview = document.getElementById("setGifPreview");
+          preview.src = url;
+          preview.classList.remove("hidden");
+          document.getElementById("setGifEmpty").classList.add("hidden");
+        }
+      });
+
+      document.getElementById("btnClearGif")?.addEventListener("click", () => {
+        state.pendingGifFile = null;
+        state.pendingGifRemoved = true;
+        document.getElementById("setGifFile").value = "";
+        document.getElementById("setGifUrl").value = "";
+        document.getElementById("setGifPreview").classList.add("hidden");
+        document.getElementById("setGifEmpty").classList.remove("hidden");
+        document.getElementById("setGifNote").textContent = "Đã gỡ GIF khỏi trang chủ (nhấn Lưu thay đổi để áp dụng).";
+      });
+
+      // Xử lý chọn tệp Nhạc nền (≤ 6MB)
+      document.getElementById("setMusicFile")?.addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        if (file.size > MAX_UPLOAD_BYTES) {
+          showToast(`File nhạc vượt quá 6MB (${formatBytes(file.size)}). Vui lòng chọn tệp nhẹ hơn.`, "error");
+          e.target.value = "";
+          return;
+        }
+        state.pendingMusicFile = file;
+        state.pendingMusicRemoved = false;
+        document.getElementById("setMusicUrl").value = "";
+        document.getElementById("setMusicNote").textContent = `Đã chọn tệp nhạc: ${file.name} (${formatBytes(file.size)})`;
+        const titleInput = document.getElementById("setMusicTitle");
+        if (titleInput && !titleInput.value.trim()) {
+          titleInput.value = file.name.replace(/\.[^/.]+$/, "");
+        }
+      });
+
+      document.getElementById("setMusicUrl")?.addEventListener("input", (e) => {
+        if (e.target.value.trim()) {
+          state.pendingMusicFile = null;
+          state.pendingMusicRemoved = false;
+        }
+      });
+
+      document.getElementById("btnClearMusic")?.addEventListener("click", () => {
+        state.pendingMusicFile = null;
+        state.pendingMusicRemoved = true;
+        document.getElementById("setMusicFile").value = "";
+        document.getElementById("setMusicUrl").value = "";
+        document.getElementById("setMusicNote").textContent = "Đã gỡ nhạc nền (nhấn Lưu thay đổi để áp dụng).";
+      });
+
+      // Modal xác nhận xóa
+      document.getElementById("btnConfirmCancel")?.addEventListener("click", () => {
+        state.confirmCallback = null;
+        closeModal("modalConfirm");
+      });
+
+      document.getElementById("btnConfirmOk")?.addEventListener("click", async () => {
+        const cb = state.confirmCallback;
+        state.confirmCallback = null;
+        closeModal("modalConfirm");
+        if (typeof cb === "function") await cb();
+      });
+
+      // Nút đóng modal & nhấn ra ngoài / phím Escape
+      document.querySelectorAll("[data-close-modal]").forEach((btn) => {
+        btn.addEventListener("click", () => closeModal(btn.getAttribute("data-close-modal")));
+      });
+
+      ["modalAuth", "modalChar", "modalSettings", "modalConfirm"].forEach((id) => {
+        const backdrop = document.getElementById(id);
+        if (backdrop) {
+          backdrop.addEventListener("click", (e) => {
+            if (e.target === backdrop) closeModal(id);
+          });
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          ["modalAuth", "modalChar", "modalSettings", "modalConfirm"].forEach(closeModal);
+        }
+      });
+    }
+
+    function bootApp() {
+      StarfieldEngine.init();
+      MusicController.init();
+      bindEvents();
+      initFirebaseAndSync();
+    }
+
+    if (document.readyState === "loading") {
+      window.addEventListener("DOMContentLoaded", bootApp);
+    } else {
+      bootApp();
+    }
+  </script>
+</body>
+</html>
